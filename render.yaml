@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: cherry-captures
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: ADMIN_PASSWORD
+        value: cherrycaptures2026
+      - key: DATABASE_URL
+        value: postgresql://postgres.tqpmfvdryjbbbktkdujv:BcsyFYdAPnNSZ2Dy@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres

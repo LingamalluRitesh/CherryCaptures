@@ -12,7 +12,7 @@ try {
 
 const dataDirectory = resolve(root, "data");
 const port = Number(process.env.PORT || 3000);
-const host = process.env.HOST || "127.0.0.1";
+const host = process.env.HOST || "0.0.0.0";
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -27,26 +27,39 @@ const contentTypes = {
 };
 
 async function serveFile(request, response, pathname) {
-  const relative = pathname === "/" ? "index.html" : decodeURIComponent(pathname.slice(1));
-  const file = resolve(root, relative);
+  let relative = pathname === "/" ? "index.html" : decodeURIComponent(pathname.slice(1));
+  if (!extname(relative) && !relative.endsWith("/")) {
+    relative = relative + ".html";
+  }
+
+  let file = resolve(root, relative);
   if (!file.startsWith(root + sep) || file.startsWith(dataDirectory + sep)) {
     response.writeHead(404, secureHeaders());
     response.end("Not found");
     return;
   }
+
+  let data = null;
   try {
-    const data = await readFile(file);
-    response.writeHead(200, {
-      ...secureHeaders(),
-      "Content-Type": contentTypes[extname(file).toLowerCase()] || "application/octet-stream",
-      "Cache-Control": extname(file) === ".html" ? "no-cache" : "public, max-age=3600"
-    });
-    if (request.method === "HEAD") response.end();
-    else response.end(data);
+    data = await readFile(file);
   } catch {
-    response.writeHead(404, secureHeaders());
-    response.end("Not found");
+    try {
+      file = resolve(root, "public", relative);
+      data = await readFile(file);
+    } catch {
+      response.writeHead(404, secureHeaders());
+      response.end("Not found");
+      return;
+    }
   }
+
+  response.writeHead(200, {
+    ...secureHeaders(),
+    "Content-Type": contentTypes[extname(file).toLowerCase()] || "application/octet-stream",
+    "Cache-Control": extname(file) === ".html" ? "no-cache" : "public, max-age=3600"
+  });
+  if (request.method === "HEAD") response.end();
+  else response.end(data);
 }
 
 const server = createServer(async (request, response) => {
@@ -70,7 +83,7 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, host, async () => {
-  console.log("Cherry Captures is running at http://" + host + ":" + port);
+  console.log("Cherry Captures is running on http://" + host + ":" + port);
   const status = await getDbStatus();
   console.log("Database status:", status.message);
   console.log("Admin password:", getAdminPassword());
