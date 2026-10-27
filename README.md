@@ -1,27 +1,86 @@
-# Cherry Captures
+# Cherry Captures — Photography & Films Studio
 
-A multi-page photography studio website with a separate admin portal, built with plain HTML, CSS and JavaScript plus a small Node.js server. It uses only Node.js built-in modules.
+A luxury multi-page photography and filmmaking studio website with a comprehensive private admin portal, dynamic customer reviews, scrollable ads with direct Instagram links, previous projects portfolio, experience stats, and custom media management.
 
-## Run locally
+Built for high-performance hosting on **Vercel** with **Supabase PostgreSQL** cloud database (and automatic local offline fallback).
 
-1. Install Node.js 20 or newer.
-2. In PowerShell, set an admin password and start the server:
+---
 
-   $env:ADMIN_PASSWORD = "choose-a-long-private-password"
+## 🌟 Key Features
+
+1. **Admin Portal (`/admin.html`)**:
+   - **Customer Reviews**: Add, view, and manage customer testimonials with 5-star ratings, event locations, and Instagram handles.
+   - **Scrollable Ads & Announcements**: Post news, seasonal offers, and new reel announcements to the animated marquee banner with direct links to Instagram.
+   - **Previous Projects & Portfolio**: Add previous weddings, portraits, and films with image URLs, categories, and Instagram post links.
+   - **Studio Experience & Stats**: Update years of experience, weddings captured, drone hours, happy couples, and bio narrative in real time.
+   - **Change Website Images**: Customize hero background, studio logo, and about images right from the admin desk.
+   - **Client Booking Enquiries**: Filter by status (*Needs reply*, *Contacted*, *Booked*, *Archived*), read client notes, and delete records.
+   - **Studio Contact Settings**: Update phone, WhatsApp, email, and Instagram profile URLs.
+   - **Database Status Indicator**: Live status showing `🟢 Supabase Connected` or `🟡 Local Storage Mode`.
+
+2. **Public Website**:
+   - Animated luxury announcement ticker at the top of pages with direct Instagram links (`Check on Instagram ↗`).
+   - Customer Reviews section ("Love Notes & Kind Words") on the homepage.
+   - Milestones and experience counters band.
+   - Dynamic portfolio gallery with categories and Instagram links.
+   - Fully responsive, accessible, with smooth parallax effects and fast loading.
+
+---
+
+## 🚀 1. Run Locally
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the local server:
+   ```bash
    npm start
+   ```
 
-3. Open http://127.0.0.1:3000 for the website or http://127.0.0.1:3000/admin.html for the admin portal.
+3. Open your browser:
+   - **Website**: [http://127.0.0.1:3000](http://127.0.0.1:3000)
+   - **Admin Portal**: [http://127.0.0.1:3000/admin.html](http://127.0.0.1:3000/admin.html) (Default password: `cherrycaptures2026`)
 
-The server creates data/site-data.json the first time it starts. Booking enquiries are saved there. The admin portal lets you review each enquiry, update its status, and change the studio phone, WhatsApp, email and Instagram details. The admin password is read from the ADMIN_PASSWORD environment variable and is never stored in the website files.
+---
 
-## Contact setup
+## 🗄️ 2. Connect to Supabase Database
 
-The studio phone and WhatsApp number are prefilled as +91 97041 63008 and 919704163008. Change either from Admin → Studio settings. Enquiries sent through the contact form are stored in the admin inbox; the page also has direct call and WhatsApp buttons.
+1. Create a free project on [Supabase](https://supabase.com).
+2. Go to **SQL Editor** in your Supabase dashboard.
+3. Open `supabase-schema.sql` from this project, copy the entire SQL script, paste it into the editor, and click **Run**.
+4. Go to **Project Settings → API** and copy:
+   - `Project URL`
+   - `Project API anon key` (or `service_role key`)
+5. Add them to your `.env` file (or Vercel Environment Variables):
+   ```env
+   SUPABASE_URL=https://your-project-id.supabase.co
+   SUPABASE_ANON_KEY=your-supabase-key
+   ```
+6. Restart the server (`npm start`). The admin header will now show `🟢 Supabase Connected`!
 
-## Visual assets and publishing
+---
 
-The hero still was generated for Cherry Captures and has a slow cinematic camera drift. The AI video service rejected generation because this account requires a higher plan, so there is no generated MP4 in this project. To use an actual video later, place an optimized, silent MP4 in public and switch the hero artwork to a muted, autoplaying, looping video with the current image as its poster.
+## 🐙 3. Push to Your GitHub
 
-Other portfolio and service photos currently use Unsplash sample images. Replace those with Cherry Captures’ own work before publishing.
+1. Create a new repository on [GitHub](https://github.com/new) (e.g. `cherry-captures`). Do **not** initialize with README or .gitignore (they are already included).
+2. In your terminal, link your remote and push:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   git branch -M main
+   git push -u origin main
+   ```
 
-The admin session lives in server memory and expires after eight hours. For production hosting, use HTTPS and persistent server storage or a managed database, and set a strong private ADMIN_PASSWORD in the host environment.
+---
+
+## ▲ 4. Deploy to Vercel
+
+1. Log in to [Vercel](https://vercel.com) and click **Add New → Project**.
+2. Select your newly pushed GitHub repository (`cherry-captures`).
+3. In **Environment Variables**, add:
+   - `ADMIN_PASSWORD` = `your-secure-password`
+   - `SUPABASE_URL` = `https://your-project.supabase.co`
+   - `SUPABASE_ANON_KEY` = `your-supabase-anon-or-service-key`
+4. Click **Deploy**.
+5. Vercel will automatically build the serverless functions (`api/index.js`) and serve the static files from the global edge network!
