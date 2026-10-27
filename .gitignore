@@ -1,0 +1,7 @@
+data/site-data.json
+data/site-data.json.tmp
+node_modules/
+.env
+.vercel/
+
+

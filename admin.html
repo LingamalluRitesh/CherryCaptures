@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c0c0b" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Portal — Cherry Captures</title>
+  <link rel="icon" href="public/cherry-captures-logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <script src="admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="public/cherry-captures-logo.jpeg" alt="" /></span>
+      <span class="brand-word">CHERRY <b>CAPTURES</b></span>
+    </a>
+    <div class="admin-header-right">
+      <span class="admin-db-badge" id="db-status-badge" title="Database status">Checking database…</span>
+      <span class="admin-secure"><i></i> PRIVATE ADMIN</span>
+      <a class="admin-site-link" href="index.html" target="_blank">VIEW WEBSITE ↗</a>
+      <button class="admin-logout" id="logout-button" type="button" hidden>LOG OUT ↗</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <!-- Login Panel -->
+    <section class="admin-login" id="login-panel">
+      <div class="admin-login-art">
+        <div class="admin-art-orbit"></div>
+        <img src="public/cherry-captures-logo.jpeg" alt="" />
+        <span>CAPTURE · CREATE · INSPIRE</span>
+      </div>
+      <div class="admin-login-copy">
+        <p class="eyebrow"><span></span> CHERRY CAPTURES / PRIVATE</p>
+        <h1>Welcome<br /><em>back.</em></h1>
+        <p>Sign in to manage enquiries, customer reviews, scrollable ads, portfolio projects, and site media.</p>
+        <form id="login-form">
+          <label>Admin password
+            <input name="password" type="password" autocomplete="current-password" required autofocus placeholder="Enter your password" />
+          </label>
+          <button class="button button-gold" type="submit">Enter the studio <span>↗</span></button>
+          <p class="admin-message" id="login-message" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <section class="admin-app" id="admin-app" hidden>
+      <div class="admin-title-row">
+        <div>
+          <p class="eyebrow"><span></span> THE STUDIO DESK</p>
+          <h1>Your <em>dashboard.</em></h1>
+        </div>
+        <span class="admin-date" id="today-date"></span>
+      </div>
+
+      <div class="admin-stats">
+        <article>
+          <span>ALL ENQUIRIES</span>
+          <b id="stat-total">0</b>
+          <small>Every story that found its way here</small>
+        </article>
+        <article>
+          <span>NEEDS A REPLY</span>
+          <b id="stat-new">0</b>
+          <small>New conversations to pick up</small>
+        </article>
+        <article>
+          <span>ACTIVE ADS & REVIEWS</span>
+          <b id="stat-promos">0</b>
+          <small>Live on the public website</small>
+        </article>
+      </div>
+
+      <div class="admin-workspace">
+        <!-- Navigation Tabs -->
+        <nav class="admin-tabs" aria-label="Admin sections">
+          <button type="button" class="admin-tab active" data-tab="enquiries"><span>01</span> Enquiries <b id="tab-enquiry-count">0</b></button>
+          <button type="button" class="admin-tab" data-tab="ads"><span>02</span> Scrollable Ads <b id="tab-ads-count">0</b></button>
+          <button type="button" class="admin-tab" data-tab="reviews"><span>03</span> Customer Reviews <b id="tab-reviews-count">0</b></button>
+          <button type="button" class="admin-tab" data-tab="projects"><span>04</span> Projects / Portfolio <b id="tab-projects-count">0</b></button>
+          <button type="button" class="admin-tab" data-tab="experience"><span>05</span> Experience & About</button>
+          <button type="button" class="admin-tab" data-tab="media"><span>06</span> Site Media & Images</button>
+          <button type="button" class="admin-tab" data-tab="settings"><span>07</span> Studio Settings</button>
+        </nav>
+
+        <!-- Tab 1: Enquiries -->
+        <section class="admin-view" id="enquiries-view">
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> INBOX</p><h2>Enquiries</h2></div>
+            <button class="admin-refresh" id="refresh-enquiries" type="button">↻ Refresh</button>
+          </div>
+          <div class="enquiry-filters">
+            <label for="status-filter">SHOW</label>
+            <select id="status-filter">
+              <option value="all">All enquiries</option>
+              <option value="new">Needs a reply</option>
+              <option value="contacted">Contacted</option>
+              <option value="booked">Booked</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+          <div class="enquiry-table-wrap">
+            <table class="enquiry-table">
+              <thead>
+                <tr>
+                  <th>CLIENT</th>
+                  <th>STORY</th>
+                  <th>DATE / PLACE</th>
+                  <th>RECEIVED</th>
+                  <th>STATUS</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody id="enquiry-rows"></tbody>
+            </table>
+            <div class="admin-empty" id="empty-enquiries" hidden>
+              <span>✳</span>
+              <h3>It’s quiet in here.</h3>
+              <p>New booking enquiries will show up as soon as someone sends one.</p>
+              <a href="contact.html" target="_blank">Open the contact page ↗</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 2: Scrollable Ads (with Instagram Links) -->
+        <section class="admin-view" id="ads-view" hidden>
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> PROMOTIONS</p><h2>Scrollable Ads & Announcements</h2></div>
+          </div>
+          <p class="settings-intro">Post promotional ads and announcements to the scrolling marquee ticker on the website. Each ad includes a direct link to your Instagram post, reel, or profile!</p>
+          
+          <div class="admin-two-col">
+            <!-- Add Ad Form -->
+            <div class="admin-card">
+              <h3>Post a New Ad</h3>
+              <form id="ad-form" class="settings-form">
+                <label>Ad Headline / Title
+                  <input name="title" type="text" placeholder="e.g. 2026-27 Wedding Dates Open" required />
+                </label>
+                <div class="form-row">
+                  <label>Badge Tag
+                    <input name="badge" type="text" placeholder="e.g. SPECIAL OFFER, LATEST REEL, UPDATE" required />
+                  </label>
+                  <label>Status
+                    <select name="active">
+                      <option value="true">Active (Live on Website)</option>
+                      <option value="false">Draft / Inactive</option>
+                    </select>
+                  </label>
+                </div>
+                <label>Description / Details
+                  <textarea name="description" rows="3" placeholder="e.g. Now taking bookings for the upcoming wedding season across India. Limited dates available." required></textarea>
+                </label>
+                <label>Instagram Post / Reel URL
+                  <input name="instagram_url" type="url" placeholder="https://instagram.com/p/... or https://instagram.com/reel/..." required />
+                  <small>Visitors can click directly on the ad banner to check the post on Instagram!</small>
+                </label>
+                <button class="button button-gold" type="submit">Publish Ad <span>↗</span></button>
+                <p class="settings-message" id="ad-message" role="status"></p>
+              </form>
+            </div>
+
+            <!-- Existing Ads List -->
+            <div class="admin-card">
+              <h3>Live Ads on Website</h3>
+              <div id="ads-list" class="admin-item-list"></div>
+              <div class="admin-empty" id="empty-ads" hidden>
+                <span>📢</span>
+                <p>No ads posted yet. Create your first scrollable ad to announce offers or Instagram reels.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 3: Customer Reviews -->
+        <section class="admin-view" id="reviews-view" hidden>
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> SOCIAL PROOF</p><h2>Customer Reviews & Testimonials</h2></div>
+          </div>
+          <p class="settings-intro">Add genuine reviews from happy couples and clients. These testimonials will be showcased prominently on the website.</p>
+          
+          <div class="admin-two-col">
+            <!-- Add Review Form -->
+            <div class="admin-card">
+              <h3>Add Customer Review</h3>
+              <form id="review-form" class="settings-form">
+                <label>Couple / Client Name
+                  <input name="client_name" type="text" placeholder="e.g. Pooja & Karthik" required />
+                </label>
+                <div class="form-row">
+                  <label>Event Type & Location
+                    <input name="event_type" type="text" placeholder="e.g. Destination Wedding, Goa" required />
+                  </label>
+                  <label>Star Rating
+                    <select name="rating">
+                      <option value="5">★★★★★ (5 Stars)</option>
+                      <option value="4">★★★★☆ (4 Stars)</option>
+                      <option value="3">★★★☆☆ (3 Stars)</option>
+                    </select>
+                  </label>
+                </div>
+                <label>Review / Testimonial
+                  <textarea name="comment" rows="4" placeholder="e.g. Cherry Captures made our wedding feel like a timeless film. Every smile, every tear, and every candid glance was preserved so naturally..." required></textarea>
+                </label>
+                <label>Instagram Handle / Link (Optional)
+                  <input name="instagram_handle" type="text" placeholder="e.g. @pooja_karthik" />
+                </label>
+                <button class="button button-gold" type="submit">Add Review <span>↗</span></button>
+                <p class="settings-message" id="review-message" role="status"></p>
+              </form>
+            </div>
+
+            <!-- Existing Reviews List -->
+            <div class="admin-card">
+              <h3>Published Reviews</h3>
+              <div id="reviews-list" class="admin-item-list"></div>
+              <div class="admin-empty" id="empty-reviews" hidden>
+                <span>⭐</span>
+                <p>No customer reviews added yet.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 4: Projects & Portfolio -->
+        <section class="admin-view" id="projects-view" hidden>
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> PORTFOLIO</p><h2>Previous Projects & Stories</h2></div>
+          </div>
+          <p class="settings-intro">Add previous wedding, portrait, and cinematic drone projects. They will appear in the portfolio gallery with links to Instagram.</p>
+
+          <div class="admin-two-col">
+            <!-- Add Project Form -->
+            <div class="admin-card">
+              <h3>Add New Project</h3>
+              <form id="project-form" class="settings-form">
+                <label>Project Title
+                  <input name="title" type="text" placeholder="e.g. A promise in the garden" required />
+                </label>
+                <div class="form-row">
+                  <label>Category
+                    <select name="category" required>
+                      <option value="weddings">Weddings</option>
+                      <option value="portraits">Portraits</option>
+                      <option value="celebrations">Celebrations</option>
+                      <option value="films">Films & Drone</option>
+                    </select>
+                  </label>
+                  <label>Subtitle / Details
+                    <input name="subtitle" type="text" placeholder="e.g. Weddings · The golden hour" />
+                  </label>
+                </div>
+                <label>Image URL
+                  <input name="image_url" type="url" placeholder="https://images.unsplash.com/... or your hosted image URL" required />
+                </label>
+                <label>Instagram Post / Reel Link (Optional)
+                  <input name="instagram_url" type="url" placeholder="https://instagram.com/p/... (direct link to the reel/post)" />
+                  <small>Visitors can click to view the full story on your Instagram!</small>
+                </label>
+                <button class="button button-gold" type="submit">Add Project <span>↗</span></button>
+                <p class="settings-message" id="project-message" role="status"></p>
+              </form>
+            </div>
+
+            <!-- Existing Projects List -->
+            <div class="admin-card">
+              <h3>Portfolio Projects</h3>
+              <div id="projects-list" class="admin-item-list"></div>
+              <div class="admin-empty" id="empty-projects" hidden>
+                <span>📷</span>
+                <p>No projects added yet.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 5: Experience & About -->
+        <section class="admin-view" id="experience-view" hidden>
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> BACKGROUND</p><h2>Studio Experience & Story</h2></div>
+          </div>
+          <p class="settings-intro">Update your experience statistics and studio story that appear on the About page and across the website.</p>
+          <form id="experience-form" class="settings-form admin-card">
+            <div class="form-grid-4">
+              <label>Years of Experience
+                <input name="years_experience" type="text" placeholder="8+ Years" required />
+              </label>
+              <label>Weddings Captured
+                <input name="weddings_captured" type="text" placeholder="250+ Celebrations" required />
+              </label>
+              <label>Drone Hours
+                <input name="drone_hours" type="text" placeholder="500+ Hours" required />
+              </label>
+              <label>Happy Couples
+                <input name="happy_couples" type="text" placeholder="300+ Couples" required />
+              </label>
+            </div>
+            <label>About Heading
+              <input name="about_heading" type="text" placeholder="Big feelings. Beautifully kept." required />
+            </label>
+            <label>Studio Story / Bio
+              <textarea name="about_story" rows="5" placeholder="Tell your journey, your creative approach, and what makes Cherry Captures special..." required></textarea>
+            </label>
+            <div class="settings-submit">
+              <button class="button button-gold" type="submit">Save Experience & Story <span>↗</span></button>
+              <p class="settings-message" id="experience-message" role="status"></p>
+            </div>
+          </form>
+        </section>
+
+        <!-- Tab 6: Site Media & Images -->
+        <section class="admin-view" id="media-view" hidden>
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> ARTWORK</p><h2>Change Website Images</h2></div>
+          </div>
+          <p class="settings-intro">Customize the images that appear on the website, including the homepage cinematic hero, studio logo, and about section images.</p>
+          <form id="media-form" class="settings-form admin-card">
+            <label>Homepage Hero Image URL
+              <input name="hero_image_url" type="text" placeholder="public/cherry-hero-ai.png or https://..." required />
+              <small>Default: <code>public/cherry-hero-ai.png</code></small>
+            </label>
+            <label>Studio Logo Image URL
+              <input name="logo_url" type="text" placeholder="public/cherry-captures-logo.jpeg or https://..." required />
+              <small>Default: <code>public/cherry-captures-logo.jpeg</code></small>
+            </label>
+            <label>About Page Story Image URL
+              <input name="about_image_url" type="text" placeholder="public/cherry-captures-logo.jpeg or https://..." />
+            </label>
+            <label>Promotional Banner Image URL (Optional)
+              <input name="banner_image_url" type="text" placeholder="https://..." />
+            </label>
+            <div class="settings-submit">
+              <button class="button button-gold" type="submit">Save Images <span>↗</span></button>
+              <p class="settings-message" id="media-message" role="status"></p>
+            </div>
+          </form>
+        </section>
+
+        <!-- Tab 7: Studio Settings -->
+        <section class="admin-view settings-view" id="settings-view" hidden>
+          <div class="admin-view-heading">
+            <div><p class="eyebrow"><span></span> STUDIO DETAILS</p><h2>Contact Settings</h2></div>
+          </div>
+          <p class="settings-intro">These details power the Call, WhatsApp, and Instagram links across the public website.</p>
+          <form id="settings-form" class="settings-form admin-card">
+            <label>Phone number, with country code
+              <input name="phone" type="tel" placeholder="+91 97041 63008" required />
+            </label>
+            <label>WhatsApp number, digits only
+              <input name="whatsapp" inputmode="numeric" placeholder="919704163008" required />
+              <small>Include the country code. Example: 919704163008</small>
+            </label>
+            <label>Enquiry email
+              <input name="email" type="email" placeholder="hello@cherrycaptures.com" />
+            </label>
+            <label>Instagram profile URL
+              <input name="instagram" type="url" placeholder="https://instagram.com/cherrycaptures" />
+            </label>
+            <div class="settings-submit">
+              <button class="button button-gold" type="submit">Save Studio Details <span>↗</span></button>
+              <p class="settings-message" id="settings-message" role="status"></p>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <p class="admin-global-message" id="admin-global-message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="admin-footer">
+    <span>CHERRY CAPTURES PRIVATE STUDIO</span>
+    <a href="index.html">← BACK TO PUBLIC WEBSITE</a>
+  </footer>
+</body>
+</html>
