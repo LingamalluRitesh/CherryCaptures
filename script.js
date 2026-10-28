@@ -41,6 +41,78 @@ function setContactLinks(settings) {
 }
 
 // -------------------------------------------------------------
+// Hero Typewriter Animation (Dynamic Cycling Taglines)
+// -------------------------------------------------------------
+function initTypewriter() {
+  const target = document.getElementById("typewriter-text");
+  if (!target) return;
+
+  const phrases = [
+    "Vehicle Delivery Shoots.",
+    "Instagram Viral Reels.",
+    "Soulful Wedding Films.",
+    "4K Drone Perspectives.",
+    "Moments That Make You, You."
+  ];
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 80;
+
+  function tick() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      charIndex--;
+      target.textContent = currentPhrase.substring(0, charIndex);
+      typingSpeed = 38;
+    } else {
+      charIndex++;
+      target.textContent = currentPhrase.substring(0, charIndex);
+      typingSpeed = 82;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typingSpeed = 2200;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typingSpeed = 450;
+    }
+
+    setTimeout(tick, typingSpeed);
+  }
+
+  setTimeout(tick, 500);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initTypewriter);
+} else {
+  initTypewriter();
+}
+
+// -------------------------------------------------------------
+// Hero Background Video Playback Assurance
+// -------------------------------------------------------------
+const heroVideo = document.querySelector("[data-hero-video]");
+if (heroVideo) {
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+  const playPromise = heroVideo.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      const resume = () => { heroVideo.play().catch(() => {}); };
+      document.addEventListener("touchstart", resume, { once: true });
+      document.addEventListener("scroll", resume, { once: true });
+      document.addEventListener("click", resume, { once: true });
+    });
+  }
+}
+
+// -------------------------------------------------------------
 // Dynamic Data Loaders (Ads, Reviews, Projects, Experience, Media)
 // -------------------------------------------------------------
 
@@ -50,47 +122,125 @@ fetch("/api/settings")
   .then(setContactLinks)
   .catch(() => setContactLinks({}));
 
-// 2. Scrollable Ads (with Instagram links)
+// Helper for photo marquee images
+function getAdPhoto(ad) {
+  if (ad.image_url) return ad.image_url;
+  const t = ((ad.title || "") + " " + (ad.badge || "")).toLowerCase();
+  if (t.includes("vehicle") || t.includes("car") || t.includes("bike") || t.includes("delivery") || t.includes("auto")) {
+    return "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80";
+  }
+  if (t.includes("reel") || t.includes("insta") || t.includes("video") || t.includes("vertical")) {
+    return "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80";
+  }
+  if (t.includes("drone") || t.includes("aerial") || t.includes("sky")) {
+    return "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80";
+  }
+  if (t.includes("supercar") || t.includes("exotic") || t.includes("exclusive")) {
+    return "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80";
+  }
+  return "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80";
+}
+
+// 2. Below-Hero Photo-Scrolling Marquee & Ads (with Instagram links)
 function loadAds() {
+  const photoTrack = document.querySelector("#photo-marquee-track");
   const tickerTrack = document.querySelector("#ticker-track");
-  if (!tickerTrack) return;
+  if (!photoTrack && !tickerTrack) return;
+
   fetch("/api/ads")
     .then((r) => r.ok ? r.json() : [])
     .then((ads) => {
       if (!ads || !ads.length) return;
-      tickerTrack.replaceChildren();
-      // Render ads twice for seamless infinite marquee loop
-      const list = [...ads, ...ads];
-      list.forEach((ad) => {
-        const item = document.createElement("div");
-        item.className = "ad-item";
 
-        const badge = document.createElement("span");
-        badge.className = "ad-badge";
-        badge.textContent = ad.badge || "PROMO";
+      // 1. Populate below-hero photo-scrolling marquee
+      if (photoTrack) {
+        photoTrack.replaceChildren();
+        const loopedAds = [...ads, ...ads];
+        loopedAds.forEach((ad) => {
+          const card = document.createElement("article");
+          card.className = "ad-photo-card";
 
-        const title = document.createElement("span");
-        title.className = "ad-title";
-        title.textContent = ad.title;
+          const img = document.createElement("img");
+          img.src = getAdPhoto(ad);
+          img.alt = ad.title || "Cherry Captures Special";
+          img.loading = "lazy";
 
-        const desc = document.createElement("span");
-        desc.className = "ad-desc";
-        desc.textContent = " — " + ad.description;
+          const overlay = document.createElement("div");
+          overlay.className = "ad-photo-overlay";
 
-        const link = document.createElement("a");
-        link.className = "ad-link";
-        link.href = ad.instagram_url || "https://instagram.com/";
-        link.target = "_blank";
-        link.rel = "noreferrer";
-        link.textContent = "Check on Instagram ↗";
+          const topBar = document.createElement("div");
+          topBar.className = "ad-photo-top";
 
-        const sep = document.createElement("span");
-        sep.className = "ticker-sep";
-        sep.textContent = "✳";
+          const badge = document.createElement("span");
+          badge.className = "ad-card-badge";
+          badge.textContent = ad.badge || "NEW SERVICE";
 
-        item.append(badge, title, desc, link);
-        tickerTrack.append(item, sep);
-      });
+          const instaTag = document.createElement("span");
+          instaTag.className = "ad-card-insta-icon";
+          instaTag.textContent = "📸 INSTAGRAM";
+
+          topBar.append(badge, instaTag);
+
+          const bottomBar = document.createElement("div");
+          bottomBar.className = "ad-photo-bottom";
+
+          const title = document.createElement("h3");
+          title.className = "ad-card-title";
+          title.textContent = ad.title;
+
+          const desc = document.createElement("p");
+          desc.className = "ad-card-desc";
+          desc.textContent = ad.description;
+
+          const action = document.createElement("a");
+          action.className = "ad-card-action";
+          action.href = ad.instagram_url || "https://instagram.com/";
+          action.target = "_blank";
+          action.rel = "noreferrer";
+          action.textContent = "Watch on Instagram ↗";
+
+          bottomBar.append(title, desc, action);
+          overlay.append(topBar, bottomBar);
+          card.append(img, overlay);
+          photoTrack.append(card);
+        });
+      }
+
+      // 2. Fallback text ticker if present
+      if (tickerTrack) {
+        tickerTrack.replaceChildren();
+        const list = [...ads, ...ads];
+        list.forEach((ad) => {
+          const item = document.createElement("div");
+          item.className = "ad-item";
+
+          const badge = document.createElement("span");
+          badge.className = "ad-badge";
+          badge.textContent = ad.badge || "PROMO";
+
+          const title = document.createElement("span");
+          title.className = "ad-title";
+          title.textContent = ad.title;
+
+          const desc = document.createElement("span");
+          desc.className = "ad-desc";
+          desc.textContent = " — " + ad.description;
+
+          const link = document.createElement("a");
+          link.className = "ad-link";
+          link.href = ad.instagram_url || "https://instagram.com/";
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.textContent = "Check on Instagram ↗";
+
+          const sep = document.createElement("span");
+          sep.className = "ticker-sep";
+          sep.textContent = "✳";
+
+          item.append(badge, title, desc, link);
+          tickerTrack.append(item, sep);
+        });
+      }
     })
     .catch(() => {});
 }

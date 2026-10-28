@@ -4,53 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0c0c0b" />
-  <meta name="description" content="Cherry Captures makes soulful wedding photography, cinematic films and drone stories. Keep the moments that make you, you." />
-  <meta property="og:title" content="Cherry Captures — Keep the feeling" />
-  <meta property="og:description" content="Photography and cinematic films for the moments that matter." />
-  <title>Cherry Captures — Keep the feeling</title>
+  <meta name="description" content="Cherry Captures — Luxury vehicle delivery shoots, viral Instagram video reels, soulful wedding photography, and 4K drone cinematography." />
+  <meta property="og:title" content="Cherry Captures — Cinematic Media Studio" />
+  <meta property="og:description" content="Vehicle delivery shoots, Instagram reels, wedding films, and aerial drone cinematography." />
+  <title>Cherry Captures — Cinematic Media Studio</title>
   <link rel="icon" href="public/cherry-captures-logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
 </head>
 <body data-page="home">
-  <!-- Scrollable Ads Marquee Banner with Instagram Links -->
-  <aside class="ads-ticker" id="ads-ticker" aria-label="Announcements & Offers">
-    <div class="ticker-wrap">
-      <div class="ticker-track" id="ticker-track">
-        <div class="ad-item">
-          <span class="ad-badge">NEW SERVICE</span>
-          <span class="ad-title">Vehicle Delivery Shoots</span>
-          <span class="ad-desc">— Cinematic showroom car & bike delivery reveal films with 4K drone tracking.</span>
-          <a class="ad-link" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch on Instagram ↗</a>
-        </div>
-        <span class="ticker-sep">✳</span>
-        <div class="ad-item">
-          <span class="ad-badge">TRENDING</span>
-          <span class="ad-title">Instagram Video & Reels Shoots</span>
-          <span class="ad-desc">— High-energy 9:16 vertical 4K edits, trending audio sync & 24h turnaround.</span>
-          <a class="ad-link" href="https://instagram.com/" target="_blank" rel="noreferrer">Explore Reels ↗</a>
-        </div>
-        <span class="ticker-sep">✳</span>
-        <div class="ad-item">
-          <span class="ad-badge">BOOKING NOW</span>
-          <span class="ad-title">2026-27 Wedding Dates Open</span>
-          <span class="ad-desc">— Taking bookings across India. Limited weekend dates available.</span>
-          <a class="ad-link" href="https://instagram.com/" target="_blank" rel="noreferrer">Check on Instagram ↗</a>
-        </div>
-        <span class="ticker-sep">✳</span>
-        <div class="ad-item">
-          <span class="ad-badge">LIMITED OFFER</span>
-          <span class="ad-title">Complimentary Drone Teaser</span>
-          <span class="ad-desc">— Complimentary 4K aerial highlight reel with all full package bookings.</span>
-          <a class="ad-link" href="https://instagram.com/" target="_blank" rel="noreferrer">Claim on Instagram ↗</a>
-        </div>
-        <span class="ticker-sep">✳</span>
-      </div>
-    </div>
-  </aside>
 
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Cherry Captures home">
@@ -73,22 +38,127 @@
   <main>
     <section class="hero">
       <div class="hero-backdrop" data-parallax>
-        <img src="public/cherry-hero-ai.png" alt="" fetchpriority="high" />
+        <video class="hero-video" autoplay muted loop playsinline poster="public/cherry-hero-ai.png" data-hero-video>
+          <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto/glide-over-coastal-beach.mp4" type="video/mp4" />
+          <img src="public/cherry-hero-ai.png" alt="Cherry Captures Studio" fetchpriority="high" />
+        </video>
         <div class="hero-vignette"></div>
         <div class="hero-grain"></div>
       </div>
       <div class="hero-copy">
-        <p class="hero-kicker reveal-text"><span></span> PHOTOGRAPHY · FILMS · DRONE</p>
-        <h1><span class="title-line">Keep the</span><span class="title-line title-accent">feeling<span class="title-period">.</span></span></h1>
-        <p class="hero-description reveal-text">The happy tears. The wild dance floor. The people who make it all mean something. We capture it as it felt.</p>
+        <div class="hero-kicker-pill reveal-text">
+          <span class="pulsing-live-dot"></span>
+          <span class="kicker-label">CHERRY CAPTURES · CINEMATIC MEDIA STUDIO</span>
+        </div>
+        <h1>
+          <span class="title-line">Capturing</span>
+          <span class="title-line title-typewriter-line">
+            <span class="typewriter-text" id="typewriter-text">Vehicle Delivery Shoots.</span><span class="typewriter-cursor">|</span>
+          </span>
+        </h1>
+        <p class="hero-description reveal-text">Showroom vehicle delivery reveals, high-energy 9:16 Instagram reels, and timeless wedding cinema. Crafted with feeling, delivered in 4K.</p>
         <div class="hero-buttons reveal-text">
-          <a class="button button-gold" href="portfolio.html">See the stories <span>↗</span></a>
-          <a class="button button-quiet" href="contact.html">Plan your shoot <span>↗</span></a>
+          <a class="button button-gold" href="portfolio.html">Explore Stories <span>↗</span></a>
+          <a class="button button-quiet" href="contact.html">Book Your Shoot <span>↗</span></a>
         </div>
       </div>
       <div class="hero-side-note"><span class="side-rule"></span><span>FOR THE MOMENTS<br />THAT MAKE YOU, YOU</span></div>
-      <a class="hero-scroll" href="#intro"><span class="scroll-dot"></span>SCROLL TO FEEL SOMETHING</a>
-      <div class="hero-counter"><span>01</span><i></i><span>04</span></div>
+      <a class="hero-scroll" href="#ads-section"><span class="scroll-dot"></span>SCROLL TO EXPLORE</a>
+      <div class="hero-counter"><span>01</span><i></i><span>05</span></div>
+    </section>
+
+    <!-- Photo-Scrolling Ads Marquee Section (Below Landing Page) -->
+    <section class="ads-photo-marquee-section" id="ads-section" aria-label="Featured Offers & Instagram Highlights">
+      <div class="section-wrap marquee-header-row">
+        <div class="marquee-title-group">
+          <div class="eyebrow"><span></span> LATEST ANNOUNCEMENTS & REELS</div>
+          <h2 class="marquee-heading">What’s happening <em>right now.</em></h2>
+        </div>
+        <span class="marquee-pause-hint">HOVER TO PAUSE ⏸ · CLICK TO OPEN ON INSTAGRAM ↗</span>
+      </div>
+      <div class="photo-marquee-wrap">
+        <div class="photo-marquee-track" id="photo-marquee-track">
+          <!-- Card 1: Vehicle Delivery Shoots -->
+          <article class="ad-photo-card">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Vehicle Delivery Shoot" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">NEW SERVICE</span>
+                <span class="ad-card-insta-icon">📸 INSTAGRAM</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Vehicle Delivery Shoots</h3>
+                <p class="ad-card-desc">Showroom car & bike delivery reveal films, ribbon cutting & 4K drone tracking.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch on Instagram ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Instagram Video & Reels -->
+          <article class="ad-photo-card">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Instagram Video & Reels Shoot" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">TRENDING</span>
+                <span class="ad-card-insta-icon">⚡ VIRAL REELS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Instagram Video & Reels</h3>
+                <p class="ad-card-desc">High-energy 9:16 vertical 4K edits, trending audio beat-sync & 24h turnaround.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Explore Reels ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: 2026-27 Wedding Dates Open -->
+          <article class="ad-photo-card">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Wedding Dates Open" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">BOOKING NOW</span>
+                <span class="ad-card-insta-icon">💍 WEDDINGS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">2026-27 Wedding Dates Open</h3>
+                <p class="ad-card-desc">Taking bookings across India. Limited weekend dates available for the upcoming season.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Check on Instagram ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Complimentary Drone Teaser -->
+          <article class="ad-photo-card">
+            <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80" alt="Complimentary Drone Teaser" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">LIMITED OFFER</span>
+                <span class="ad-card-insta-icon">🚁 4K AERIAL</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Complimentary Drone Teaser</h3>
+                <p class="ad-card-desc">Complimentary 4K cinematic aerial highlight reel with all full wedding package bookings.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Claim on Instagram ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Exotic & Supercar Delivery -->
+          <article class="ad-photo-card">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Exotic & Supercar Delivery" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">EXCLUSIVE</span>
+                <span class="ad-card-insta-icon">🏎️ ROLLING SHOTS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Exotic & Supercar Delivery</h3>
+                <p class="ad-card-desc">Satin sheet unboxing, exhaust sound captures & high-speed rolling highway b-roll.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch on Instagram ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
     <section class="intro section-wrap" id="intro">
       <div class="eyebrow"><span></span> A STORY STAYS WITH YOU</div>
