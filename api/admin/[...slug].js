@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
   const proto = req.headers["x-forwarded-proto"] || "https";
   const slug = Array.isArray(req.query?.slug) ? req.query.slug.join("/") : (req.query?.slug || "");
-  const url = new URL(`/api/admin/${slug}`, `${proto}://${host}`);
+  const fallbackPath = `/api/admin/${slug}`;
+  const url = new URL(req.url && req.url.startsWith("/api/admin") ? req.url : fallbackPath, `${proto}://${host}`);
   await handleApiRequest(req, res, url);
 }
