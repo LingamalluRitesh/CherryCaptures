@@ -1,5 +1,5 @@
-.admin-body { min-height: 100vh; background: radial-gradient(ellipse at 78% 4%, rgba(137,91,34,.14), transparent 38%), var(--black); }
-.admin-header { height: 80px; padding-inline: max(32px, calc((100vw - 1280px) / 2)); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(12,12,11,.94); backdrop-filter: blur(12px); }
+.admin-body { min-height: 100vh; background: transparent; position: relative; }
+.admin-header { height: 80px; padding-inline: max(32px, calc((100vw - 1280px) / 2)); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(12,12,11,.88); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 40; }
 .admin-header-right { display: flex; align-items: center; gap: 20px; }
 .admin-secure { display: inline-flex; align-items: center; gap: 8px; color: #a8a092; font-size: 11px; font-weight: 600; letter-spacing: .12em; }
 .admin-secure i { width: 7px; height: 7px; border-radius: 50%; background: #78a981; box-shadow: 0 0 9px rgba(120,169,129,.7); }
@@ -12,7 +12,7 @@
 .admin-db-badge.db-supabase { border-color: rgba(120,169,129,.5); color: #a4d8ae; }
 .admin-db-badge.db-local { border-color: rgba(216,173,99,.45); color: var(--gold-pale); }
 
-.admin-main { width: min(1240px, calc(100% - 48px)); min-height: calc(100vh - 132px); margin: 0 auto; padding: 40px 0 72px; }
+.admin-main { width: min(1240px, calc(100% - 48px)); min-height: calc(100vh - 132px); margin: 0 auto; padding: 40px 0 72px; position: relative; z-index: 10; }
 .admin-login { min-height: 620px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 9%; }
 .admin-login-art { width: min(100%, 470px); position: relative; padding: 12px; border: 1px solid rgba(216,173,99,.36); background: linear-gradient(145deg, rgba(216,173,99,.13), transparent 50%); border-radius: 6px; }
 .admin-login-art > img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
@@ -38,7 +38,7 @@
 .admin-stats article > b { margin: 8px 0 4px; color: var(--gold-pale); font: 38px/1 var(--serif); font-weight: 400; }
 .admin-stats article > small { margin-top: auto; color: #9c9486; font-size: 12px; }
 
-.admin-workspace { display: grid; grid-template-columns: 240px 1fr; min-height: 560px; border: 1px solid var(--line); border-radius: 6px; background: rgba(255,255,255,.015); overflow: hidden; }
+.admin-workspace { display: grid; grid-template-columns: 240px 1fr; min-height: 560px; border: 1px solid var(--line); border-radius: 6px; background: rgba(18, 17, 14, 0.78); backdrop-filter: blur(16px); overflow: hidden; }
 .admin-tabs { padding: 18px 12px; border-right: 1px solid var(--line); background: rgba(0,0,0,.2); display: flex; flex-direction: column; gap: 6px; }
 .admin-tab { width: 100%; display: flex; align-items: center; gap: 10px; padding: 12px 12px; border: 0; background: transparent; color: #b8b0a2; text-align: left; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .15s ease; border-radius: 4px; }
 .admin-tab:hover { color: var(--cream); background: rgba(255,255,255,.04); }

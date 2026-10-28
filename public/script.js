@@ -41,76 +41,22 @@ function setContactLinks(settings) {
 }
 
 // -------------------------------------------------------------
-// Hero Typewriter Animation (Dynamic Cycling Taglines)
+// Site-Wide Background Video Playback Assurance
 // -------------------------------------------------------------
-function initTypewriter() {
-  const target = document.getElementById("typewriter-text");
-  if (!target) return;
-
-  const phrases = [
-    "Vehicle Delivery Shoots.",
-    "Instagram Viral Reels.",
-    "Soulful Wedding Films.",
-    "4K Drone Perspectives.",
-    "Moments That Make You, You."
-  ];
-
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
-
-  function tick() {
-    const currentPhrase = phrases[phraseIndex];
-
-    if (isDeleting) {
-      charIndex--;
-      target.textContent = currentPhrase.substring(0, charIndex);
-      typingSpeed = 38;
-    } else {
-      charIndex++;
-      target.textContent = currentPhrase.substring(0, charIndex);
-      typingSpeed = 82;
-    }
-
-    if (!isDeleting && charIndex === currentPhrase.length) {
-      typingSpeed = 2200;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      typingSpeed = 450;
-    }
-
-    setTimeout(tick, typingSpeed);
-  }
-
-  setTimeout(tick, 500);
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initTypewriter);
-} else {
-  initTypewriter();
-}
-
-// -------------------------------------------------------------
-// Hero Background Video Playback Assurance
-// -------------------------------------------------------------
-const heroVideo = document.querySelector("[data-hero-video]");
-if (heroVideo) {
-  heroVideo.muted = true;
-  heroVideo.playsInline = true;
-  const playPromise = heroVideo.play();
+const siteVideos = document.querySelectorAll("[data-site-video], [data-hero-video]");
+siteVideos.forEach((video) => {
+  video.muted = true;
+  video.playsInline = true;
+  const playPromise = video.play();
   if (playPromise !== undefined) {
     playPromise.catch(() => {
-      const resume = () => { heroVideo.play().catch(() => {}); };
+      const resume = () => { video.play().catch(() => {}); };
       document.addEventListener("touchstart", resume, { once: true });
       document.addEventListener("scroll", resume, { once: true });
       document.addEventListener("click", resume, { once: true });
     });
   }
-}
+});
 
 // -------------------------------------------------------------
 // Dynamic Data Loaders (Ads, Reviews, Projects, Experience, Media)
@@ -265,7 +211,7 @@ function loadReviews() {
 
         const quote = document.createElement("p");
         quote.className = "review-quote";
-        quote.textContent = `“${rev.comment}”`;
+        quote.textContent = rev.comment;
 
         const author = document.createElement("div");
         author.className = "review-author";

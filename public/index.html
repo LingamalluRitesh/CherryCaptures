@@ -16,6 +16,15 @@
   <script src="script.js" defer></script>
 </head>
 <body data-page="home">
+  <!-- Site-Wide Background Video (Entire Website) -->
+  <div class="site-bg-video-wrap" aria-hidden="true">
+    <video class="site-bg-video" autoplay muted loop playsinline poster="public/cherry-hero-ai.png" data-site-video>
+      <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto/glide-over-coastal-beach.mp4" type="video/mp4" />
+      <img src="public/cherry-hero-ai.png" alt="" />
+    </video>
+    <div class="site-bg-vignette"></div>
+    <div class="site-bg-grain"></div>
+  </div>
 
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Cherry Captures home">
@@ -37,27 +46,14 @@
   </header>
   <main>
     <section class="hero">
-      <div class="hero-backdrop" data-parallax>
-        <video class="hero-video" autoplay muted loop playsinline poster="public/cherry-hero-ai.png" data-hero-video>
-          <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto/glide-over-coastal-beach.mp4" type="video/mp4" />
-          <img src="public/cherry-hero-ai.png" alt="Cherry Captures Studio" fetchpriority="high" />
-        </video>
-        <div class="hero-vignette"></div>
-        <div class="hero-grain"></div>
-      </div>
       <div class="hero-copy">
-        <div class="hero-kicker-pill reveal-text">
-          <span class="pulsing-live-dot"></span>
-          <span class="kicker-label">CHERRY CAPTURES · CINEMATIC MEDIA STUDIO</span>
-        </div>
-        <h1>
-          <span class="title-line">Capturing</span>
-          <span class="title-line title-typewriter-line">
-            <span class="typewriter-text" id="typewriter-text">Vehicle Delivery Shoots.</span><span class="typewriter-cursor">|</span>
-          </span>
+        <p class="hero-kicker"><span></span> CHERRY CAPTURES · CINEMATIC MEDIA STUDIO</p>
+        <h1 class="hero-title">
+          <span class="title-line">Keep the</span>
+          <span class="title-line title-accent">feeling<span class="title-period">.</span></span>
         </h1>
-        <p class="hero-description reveal-text">Showroom vehicle delivery reveals, high-energy 9:16 Instagram reels, and timeless wedding cinema. Crafted with feeling, delivered in 4K.</p>
-        <div class="hero-buttons reveal-text">
+        <p class="hero-description">Showroom vehicle delivery reveals, high-energy 9:16 Instagram reels, soulful wedding celebrations, and 4K aerial drone cinema. Crafted with feeling, delivered across India.</p>
+        <div class="hero-buttons">
           <a class="button button-gold" href="portfolio.html">Explore Stories <span>↗</span></a>
           <a class="button button-quiet" href="contact.html">Book Your Shoot <span>↗</span></a>
         </div>
@@ -225,7 +221,7 @@
           <!-- Dynamically populated or rendered -->
           <article class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-quote">“Cherry Captures made our wedding feel like a timeless film. Every smile, every tear, and every candid glance was preserved so naturally. We can't stop rewatching our gallery!”</p>
+            <p class="review-quote">Cherry Captures made our wedding feel like a timeless film. Every smile, every tear, and every candid glance was preserved so naturally. We can't stop rewatching our gallery!</p>
             <div class="review-author">
               <div>
                 <b>Pooja & Karthik</b>
@@ -236,7 +232,7 @@
           </article>
           <article class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-quote">“The drone shots took our breath away! Professional, warm, and invisible during the sacred rituals. Truly gifted storytellers.”</p>
+            <p class="review-quote">The drone shots took our breath away! Professional, warm, and invisible during the sacred rituals. Truly gifted storytellers.</p>
             <div class="review-author">
               <div>
                 <b>Deepika & Rahul</b>
@@ -247,7 +243,7 @@
           </article>
           <article class="review-card">
             <div class="review-stars">★★★★★</div>
-            <p class="review-quote">“From the pre-wedding shoot to our reception, the team brought so much patience, kindness, and cinematic artistry. Highly recommended!”</p>
+            <p class="review-quote">From the pre-wedding shoot to our reception, the team brought so much patience, kindness, and cinematic artistry. Highly recommended!</p>
             <div class="review-author">
               <div>
                 <b>Sneha & Arjun</b>
@@ -263,7 +259,7 @@
     <section class="home-cta section-wrap">
       <div class="cta-ring" aria-hidden="true"><span>✳</span></div>
       <div class="eyebrow"><span></span> YOUR STORY STARTS HERE</div>
-      <h2>What are you<br /><em>celebrating?</em></h2>
+      <h2>Keep the moments<br /><em>that matter most.</em></h2>
       <p>Tell us what you’re dreaming up. We’d love to hear every little detail.</p>
       <a class="button button-gold" href="contact.html">Let’s make a story <span>↗</span></a>
     </section>
