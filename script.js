@@ -198,6 +198,8 @@ function loadPortfolio() {
     .then((r) => r.ok ? r.json() : [])
     .then((projects) => {
       if (!projects || !projects.length) return;
+      const allCountBadge = document.querySelector('[data-filter="all"] span');
+      if (allCountBadge) allCountBadge.textContent = String(projects.length).padStart(2, "0");
       grid.replaceChildren();
       projects.forEach((proj, idx) => {
         const card = document.createElement("button");

@@ -119,14 +119,17 @@ ON CONFLICT DO NOTHING;
 -- Initial default ads with Instagram links
 INSERT INTO public.ads (title, badge, description, instagram_url, active)
 VALUES
+('Vehicle Delivery Shoots', 'NEW SERVICE', 'Cinematic showroom car & bike delivery reveal films with 4K drone tracking.', 'https://instagram.com/', true),
+('Instagram Video & Reels Shoots', 'TRENDING', 'High-energy 9:16 vertical 4K edits, trending audio sync & 24h turnaround.', 'https://instagram.com/', true),
 ('2026-27 Wedding Dates Open', 'BOOKING NOW', 'Now taking bookings for the upcoming wedding season across India. Limited weekend dates available.', 'https://instagram.com/', true),
-('New Cinematic Reel Live', 'LATEST REEL', 'Watch the dreamy sunset teaser from our latest destination wedding in Goa on our Instagram.', 'https://instagram.com/', true),
 ('Complimentary Drone Teaser', 'LIMITED OFFER', 'Book your wedding package this month and get a complimentary 4K cinematic aerial highlight reel.', 'https://instagram.com/', true)
 ON CONFLICT DO NOTHING;
 
 -- Initial default projects
 INSERT INTO public.projects (title, category, subtitle, image_url, instagram_url, featured)
 VALUES
+('Nightfall in the GT', 'vehicles', 'Vehicle Delivery · Showroom Reveal', 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1400&q=88', 'https://instagram.com/', true),
+('Golden Hour Aesthetic', 'reels', 'Instagram Reel · 4K Vertical', 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=88', 'https://instagram.com/', true),
 ('A promise in the garden', 'weddings', 'Weddings · The golden hour', 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=88', 'https://instagram.com/', true),
 ('Where the day begins', 'weddings', 'Weddings · A quiet beginning', 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1200&q=88', 'https://instagram.com/', true),
 ('A softer kind of Sunday', 'portraits', 'Portraits · At home', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=88', 'https://instagram.com/', true),
@@ -148,21 +151,35 @@ ALTER TABLE public.experience ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.media ENABLE ROW LEVEL SECURITY;
 
 -- Allow public read access to content tables
+DROP POLICY IF EXISTS "Public read settings" ON public.settings;
 CREATE POLICY "Public read settings" ON public.settings FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Public read reviews" ON public.reviews;
 CREATE POLICY "Public read reviews" ON public.reviews FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Public read ads" ON public.ads;
 CREATE POLICY "Public read ads" ON public.ads FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Public read projects" ON public.projects;
 CREATE POLICY "Public read projects" ON public.projects FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Public read experience" ON public.experience;
 CREATE POLICY "Public read experience" ON public.experience FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Public read media" ON public.media;
 CREATE POLICY "Public read media" ON public.media FOR SELECT USING (true);
 
 -- Allow public to submit booking enquiries
+DROP POLICY IF EXISTS "Public insert enquiries" ON public.enquiries;
 CREATE POLICY "Public insert enquiries" ON public.enquiries FOR INSERT WITH CHECK (true);
 
 -- Full access for service_role (used by server backend)
+DROP POLICY IF EXISTS "Service full access settings" ON public.settings;
 CREATE POLICY "Service full access settings" ON public.settings USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Service full access enquiries" ON public.enquiries;
 CREATE POLICY "Service full access enquiries" ON public.enquiries USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Service full access reviews" ON public.reviews;
 CREATE POLICY "Service full access reviews" ON public.reviews USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Service full access ads" ON public.ads;
 CREATE POLICY "Service full access ads" ON public.ads USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Service full access projects" ON public.projects;
 CREATE POLICY "Service full access projects" ON public.projects USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Service full access experience" ON public.experience;
 CREATE POLICY "Service full access experience" ON public.experience USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Service full access media" ON public.media;
 CREATE POLICY "Service full access media" ON public.media USING (true) WITH CHECK (true);
