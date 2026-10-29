@@ -250,19 +250,19 @@ main { position: relative; z-index: 10; }
   display: flex;
   gap: 24px;
   width: max-content;
-  /* Left to Right: translateX(-50%) to translateX(0) */
-  animation: marquee-photo-scroll-ltr 65s linear infinite;
+  /* Right to Left scrolling */
+  animation: marquee-photo-scroll-rtl 60s linear infinite;
   will-change: transform;
 }
 .photo-marquee-track:hover {
   animation-play-state: paused;
 }
-@keyframes marquee-photo-scroll-ltr {
+@keyframes marquee-photo-scroll-rtl {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(-50%);
   }
 }
 

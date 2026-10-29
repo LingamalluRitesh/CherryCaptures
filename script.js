@@ -72,22 +72,25 @@ fetch("/api/settings")
 function getAdPhoto(ad) {
   if (ad.image_url) return ad.image_url;
   const t = ((ad.title || "") + " " + (ad.badge || "")).toLowerCase();
+  if (t.includes("car") || t.includes("vehicle") || t.includes("delivery") || t.includes("automobile")) {
+    return "public/indian-car-delivery-realistic.png";
+  }
+  if (t.includes("reel") || t.includes("reels") || t.includes("video") || t.includes("cinema") || t.includes("film") || t.includes("drone")) {
+    return "public/indian-reels-cinematography-realistic.png";
+  }
   if (t.includes("wedding") || t.includes("muhurtham") || t.includes("varmala") || t.includes("marriage")) {
-    return "public/indian-wedding-couple.png";
+    return "public/indian-wedding-marriage-realistic.png";
   }
   if (t.includes("pre-wedding") || t.includes("prewedding") || t.includes("couple") || t.includes("sunset") || t.includes("romantic")) {
-    return "public/indian-prewedding-sunset.png";
+    return "public/indian-prewedding-realistic.png";
   }
   if (t.includes("half-saree") || t.includes("halfsaree") || t.includes("langa") || t.includes("voni") || t.includes("ritusuddhi")) {
-    return "public/south-indian-halfsaree-ceremony.png";
+    return "public/indian-halfsaree-realistic.png";
   }
   if (t.includes("birthday") || t.includes("kids") || t.includes("smash") || t.includes("child") || t.includes("cake")) {
-    return "public/indian-birthday-celebration.png";
+    return "public/indian-birthday-realistic.png";
   }
-  if (t.includes("drone") || t.includes("aerial") || t.includes("sky")) {
-    return "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80";
-  }
-  return "public/indian-wedding-couple.png";
+  return "public/indian-wedding-marriage-realistic.png";
 }
 
 // 2. Below-Hero Photo-Scrolling Marquee & Ads (with Instagram links)
