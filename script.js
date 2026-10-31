@@ -198,6 +198,90 @@ function loadAds() {
 }
 loadAds();
 
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str).replace(/[&<>"']/g, (m) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[m]));
+}
+
+function createReviewCard(rev) {
+  const card = document.createElement("article");
+  card.className = "review-card";
+
+  const topRow = document.createElement("div");
+  topRow.className = "review-card-top";
+
+  const stars = document.createElement("div");
+  stars.className = "review-stars";
+  stars.textContent = "★".repeat(rev.rating || 5) + "☆".repeat(5 - (rev.rating || 5));
+
+  const badge = document.createElement("span");
+  badge.className = "review-badge";
+  badge.textContent = rev.event_type || "CELEBRATION";
+
+  topRow.append(stars, badge);
+
+  const bodyWrap = document.createElement("div");
+  bodyWrap.className = "review-body-wrap";
+
+  const commentText = rev.comment || "";
+  if (commentText.includes("Warmest Wishes:") || commentText.includes("Best Wishes:")) {
+    const parts = commentText.split(/(?:Warmest Wishes:|Best Wishes:)/i);
+    const mainReview = parts[0].trim();
+    const wishes = parts[1] ? parts[1].trim() : "";
+
+    if (mainReview) {
+      const pQuote = document.createElement("p");
+      pQuote.className = "review-quote";
+      pQuote.textContent = mainReview;
+      bodyWrap.append(pQuote);
+    }
+
+    if (wishes) {
+      const wishesBox = document.createElement("div");
+      wishesBox.className = "review-best-wishes-box";
+      wishesBox.innerHTML = `<span class="wishes-tag">🌸 Heartfelt Best Wishes</span><p class="wishes-text">${escapeHtml(wishes)}</p>`;
+      bodyWrap.append(wishesBox);
+    }
+  } else {
+    const pQuote = document.createElement("p");
+    pQuote.className = "review-quote";
+    pQuote.textContent = commentText;
+    bodyWrap.append(pQuote);
+  }
+
+  const author = document.createElement("div");
+  author.className = "review-author";
+
+  const info = document.createElement("div");
+  const name = document.createElement("b");
+  name.textContent = rev.client_name;
+  const eventType = document.createElement("small");
+  eventType.textContent = rev.event_type || "Celebration";
+  info.append(name, eventType);
+
+  author.append(info);
+
+  if (rev.instagram_handle) {
+    const insta = document.createElement("a");
+    insta.className = "review-insta";
+    const handle = rev.instagram_handle.startsWith("@") ? rev.instagram_handle.slice(1) : rev.instagram_handle;
+    insta.href = rev.instagram_handle.startsWith("http") ? rev.instagram_handle : `https://instagram.com/${handle}`;
+    insta.target = "_blank";
+    insta.rel = "noreferrer";
+    insta.textContent = rev.instagram_handle.startsWith("@") ? rev.instagram_handle : `@${rev.instagram_handle}`;
+    author.append(insta);
+  }
+
+  card.append(topRow, bodyWrap, author);
+  return card;
+}
+
 // 3. Customer Reviews
 function loadReviews() {
   const container = document.querySelector("#reviews-container");
@@ -208,47 +292,150 @@ function loadReviews() {
       if (!reviews || !reviews.length) return;
       container.replaceChildren();
       reviews.forEach((rev) => {
-        const card = document.createElement("article");
-        card.className = "review-card";
-
-        const stars = document.createElement("div");
-        stars.className = "review-stars";
-        stars.textContent = "★".repeat(rev.rating || 5) + "☆".repeat(5 - (rev.rating || 5));
-
-        const quote = document.createElement("p");
-        quote.className = "review-quote";
-        quote.textContent = rev.comment;
-
-        const author = document.createElement("div");
-        author.className = "review-author";
-
-        const info = document.createElement("div");
-        const name = document.createElement("b");
-        name.textContent = rev.client_name;
-        const eventType = document.createElement("small");
-        eventType.textContent = rev.event_type;
-        info.append(name, eventType);
-
-        author.append(info);
-
-        if (rev.instagram_handle) {
-          const insta = document.createElement("a");
-          insta.className = "review-insta";
-          const handle = rev.instagram_handle.startsWith("@") ? rev.instagram_handle.slice(1) : rev.instagram_handle;
-          insta.href = rev.instagram_handle.startsWith("http") ? rev.instagram_handle : `https://instagram.com/${handle}`;
-          insta.target = "_blank";
-          insta.rel = "noreferrer";
-          insta.textContent = rev.instagram_handle;
-          author.append(insta);
-        }
-
-        card.append(stars, quote, author);
-        container.append(card);
+        container.append(createReviewCard(rev));
       });
     })
     .catch(() => {});
 }
 loadReviews();
+
+// 3b. Setup Public Review & Best Wishes Submission
+function setupReviewSubmission() {
+  const dialog = document.querySelector("#review-dialog");
+  const openBtns = document.querySelectorAll(".open-review-modal-btn, #open-review-btn, #bottom-review-btn");
+  const closeBtn = document.querySelector("#close-review-dialog");
+  const form = document.querySelector("#public-review-form");
+  const feedback = document.querySelector("#review-form-feedback");
+  const starPicker = document.querySelector("#star-picker");
+  const ratingInput = document.querySelector("#review-rating-input");
+  const container = document.querySelector("#reviews-container");
+
+  if (!dialog || !form) return;
+
+  function openDialog() {
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute("open", "");
+    }
+    if (feedback) {
+      feedback.textContent = "";
+      feedback.className = "review-form-feedback";
+    }
+  }
+
+  function closeDialog() {
+    if (typeof dialog.close === "function") {
+      dialog.close();
+    } else {
+      dialog.removeAttribute("open");
+    }
+  }
+
+  openBtns.forEach((btn) => btn.addEventListener("click", openDialog));
+  if (closeBtn) closeBtn.addEventListener("click", closeDialog);
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) closeDialog();
+  });
+
+  // Star Picker interactions
+  if (starPicker && ratingInput) {
+    const starBtns = starPicker.querySelectorAll(".star-btn");
+    function setRating(val) {
+      ratingInput.value = String(val);
+      starBtns.forEach((b) => {
+        const bVal = Number(b.dataset.value);
+        b.classList.toggle("active", bVal <= val);
+      });
+    }
+
+    starBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setRating(Number(btn.dataset.value));
+      });
+      btn.addEventListener("mouseenter", () => {
+        const val = Number(btn.dataset.value);
+        starBtns.forEach((b) => {
+          b.classList.toggle("hovered", Number(b.dataset.value) <= val);
+        });
+      });
+    });
+
+    starPicker.addEventListener("mouseleave", () => {
+      starBtns.forEach((b) => b.classList.remove("hovered"));
+    });
+  }
+
+  // Handle Form Submission
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = document.querySelector("#submit-review-btn");
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Publishing Wishes...";
+    }
+    if (feedback) {
+      feedback.className = "review-form-feedback";
+      feedback.textContent = "";
+    }
+
+    const payload = {
+      client_name: form.elements.client_name.value.trim(),
+      event_type: form.elements.event_type.value,
+      rating: Number(form.elements.rating.value) || 5,
+      comment: form.elements.comment.value.trim(),
+      best_wishes: form.elements.best_wishes ? form.elements.best_wishes.value.trim() : "",
+      instagram_handle: form.elements.instagram_handle ? form.elements.instagram_handle.value.trim() : ""
+    };
+
+    try {
+      const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Could not publish your review. Please try again.");
+      }
+
+      if (feedback) {
+        feedback.className = "review-form-feedback is-success";
+        feedback.textContent = "✨ Thank you! Your review and best wishes are now published.";
+      }
+
+      if (container) {
+        const newCard = createReviewCard(data);
+        newCard.classList.add("review-newly-added");
+        container.prepend(newCard);
+      }
+
+      form.reset();
+      if (ratingInput) ratingInput.value = "5";
+      if (starPicker) {
+        starPicker.querySelectorAll(".star-btn").forEach((b) => b.classList.add("active"));
+      }
+
+      setTimeout(() => {
+        closeDialog();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "<span>Publish Review & Best Wishes ↗</span>";
+        }
+      }, 1600);
+    } catch (err) {
+      if (feedback) {
+        feedback.className = "review-form-feedback is-error";
+        feedback.textContent = err.message;
+      }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "<span>Publish Review & Best Wishes ↗</span>";
+      }
+    }
+  });
+}
+setupReviewSubmission();
 
 // 4. Experience & Stats
 function loadExperience() {

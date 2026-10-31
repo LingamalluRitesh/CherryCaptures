@@ -11,7 +11,7 @@
   <link rel="icon" href="public/cherry-captures-logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
 </head>
@@ -305,15 +305,33 @@
       </div>
     </section>
 
-    <!-- Customer Reviews Section -->
-    <section class="home-reviews">
+    <!-- Customer Reviews, Best Wishes & Blessings Section -->
+    <section class="home-reviews" id="reviews">
       <div class="section-wrap">
-        <div class="eyebrow"><span></span> WORDS FROM OUR FAMILIES</div>
-        <h2>What our couples say<br /><em>about Cherry Captures.</em></h2>
+        <div class="reviews-header-bar">
+          <div>
+            <div class="eyebrow"><span></span> WORDS FROM OUR FAMILIES & COUPLES</div>
+            <h2>Reviews & <em>Heartfelt Wishes.</em></h2>
+            <p class="reviews-subtitle">Cherished experiences, blessings, and lovely memories shared by our happy couples and celebration guests.</p>
+          </div>
+          <button class="button button-gold open-review-modal-btn" id="open-review-btn" type="button">
+            <span>✨ Give a Review & Best Wishes ↗</span>
+          </button>
+        </div>
+
         <div class="reviews-grid" id="reviews-container">
           <article class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-quote">Cherry Captures made our wedding feel like a timeless film. Every sacred ritual, every tear of happiness, and every candid glance was preserved so naturally. We can't stop rewatching our gallery!</p>
+            <div class="review-card-top">
+              <div class="review-stars">★★★★★</div>
+              <span class="review-badge">TRADITIONAL WEDDING</span>
+            </div>
+            <div class="review-body-wrap">
+              <p class="review-quote">Cherry Captures made our wedding feel like a timeless film. Every sacred ritual, every tear of happiness, and every candid glance was preserved so naturally. We can't stop rewatching our gallery!</p>
+              <div class="review-best-wishes-box">
+                <span class="wishes-tag">🌸 Heartfelt Best Wishes</span>
+                <p class="wishes-text">May Cherry Captures continue bringing pure joy and cinematic magic to thousands more families!</p>
+              </div>
+            </div>
             <div class="review-author">
               <div>
                 <b>Pooja & Karthik</b>
@@ -322,9 +340,19 @@
               <a class="review-insta" href="https://instagram.com/" target="_blank" rel="noreferrer">@pooja_karthik</a>
             </div>
           </article>
+
           <article class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-quote">Our daughter's Half-Saree ceremony pictures turned out magnificent! The traditional lighting, the jewelry details, and the family portraits were captured with so much elegance and patience.</p>
+            <div class="review-card-top">
+              <div class="review-stars">★★★★★</div>
+              <span class="review-badge">HALF-SAREE CEREMONY</span>
+            </div>
+            <div class="review-body-wrap">
+              <p class="review-quote">Our daughter's Half-Saree ceremony pictures turned out magnificent! The traditional lighting, the jewelry details, and the family portraits were captured with so much elegance and patience.</p>
+              <div class="review-best-wishes-box">
+                <span class="wishes-tag">🌸 Heartfelt Best Wishes</span>
+                <p class="wishes-text">Warmest blessings for our daughter on her auspicious milestone, and immense gratitude to the team.</p>
+              </div>
+            </div>
             <div class="review-author">
               <div>
                 <b>Harini & Suresh</b>
@@ -333,9 +361,19 @@
               <a class="review-insta" href="https://instagram.com/" target="_blank" rel="noreferrer">@harini_s</a>
             </div>
           </article>
+
           <article class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-quote">The pre-wedding shoot was an absolute dream! The team made us feel so comfortable and the sunset lake portraits look like they came straight out of a high-fashion magazine.</p>
+            <div class="review-card-top">
+              <div class="review-stars">★★★★★</div>
+              <span class="review-badge">PRE-WEDDING SHOOT</span>
+            </div>
+            <div class="review-body-wrap">
+              <p class="review-quote">The pre-wedding shoot was an absolute dream! The team made us feel so comfortable and the sunset lake portraits look like they came straight out of a high-fashion magazine.</p>
+              <div class="review-best-wishes-box">
+                <span class="wishes-tag">🌸 Heartfelt Best Wishes</span>
+                <p class="wishes-text">Wishing the bride and groom lifetime happiness and boundless love ahead!</p>
+              </div>
+            </div>
             <div class="review-author">
               <div>
                 <b>Sneha & Arjun</b>
@@ -345,8 +383,83 @@
             </div>
           </article>
         </div>
+
+        <!-- Reviews Bottom CTA Banner -->
+        <div class="reviews-cta-banner">
+          <div class="reviews-cta-text">
+            <h3>Celebrated with us or attending an event?</h3>
+            <p>Your blessings and reviews mean the world to our couples and our studio. Share your heartfelt thoughts and wishes in just a moment.</p>
+          </div>
+          <button class="button button-outline" id="bottom-review-btn" type="button">
+            <span>Write a Review & Send Blessings ↗</span>
+          </button>
+        </div>
       </div>
     </section>
+
+    <!-- Review & Best Wishes Submission Dialog Modal -->
+    <dialog class="review-dialog" id="review-dialog" aria-label="Submit your review and best wishes">
+      <div class="review-dialog-content">
+        <button class="review-dialog-close" id="close-review-dialog" type="button" aria-label="Close dialog">×</button>
+        <div class="review-dialog-head">
+          <div class="eyebrow"><span></span> CELEBRATION BLESSINGS</div>
+          <h2>Share Your Review & <em>Best Wishes.</em></h2>
+          <p>Leave a review for Cherry Captures and share your heartfelt blessings for our couples & families.</p>
+        </div>
+
+        <form class="public-review-form" id="public-review-form">
+          <div class="form-grid">
+            <label>Your Name / Family Name *
+              <input name="client_name" type="text" placeholder="e.g. Ananya & Rohit or The Sharma Family" required maxlength="100" />
+            </label>
+
+            <label>Celebration / Event Type *
+              <select name="event_type" id="review-event-type" required>
+                <option value="" disabled selected>Select event</option>
+                <option value="Marriage & Wedding Shoot">Marriage & Wedding Shoot</option>
+                <option value="Romantic Pre-Wedding Shoot">Romantic Pre-Wedding Shoot</option>
+                <option value="Birthday & Milestone Celebration">Birthday & Milestone Celebration</option>
+                <option value="Half-Saree Function (Langa Voni)">Half-Saree Function (Langa Voni)</option>
+                <option value="Luxury Car & Vehicle Delivery">Luxury Car & Vehicle Delivery</option>
+                <option value="Instagram Reels & Video Shoot">Instagram Reels & Video Shoot</option>
+                <option value="Heartfelt Wishes & Blessings">Heartfelt Wishes & Blessings</option>
+              </select>
+            </label>
+
+            <div class="form-wide rating-select-group">
+              <span class="rating-label">Your Rating *</span>
+              <div class="star-rating-picker" id="star-picker" role="radiogroup" aria-label="Rating">
+                <button type="button" class="star-btn" data-value="1" aria-label="1 star">★</button>
+                <button type="button" class="star-btn" data-value="2" aria-label="2 stars">★</button>
+                <button type="button" class="star-btn" data-value="3" aria-label="3 stars">★</button>
+                <button type="button" class="star-btn" data-value="4" aria-label="4 stars">★</button>
+                <button type="button" class="star-btn active" data-value="5" aria-label="5 stars">★</button>
+              </div>
+              <input type="hidden" name="rating" id="review-rating-input" value="5" />
+            </div>
+
+            <label class="form-wide">Your Experience / Review *
+              <textarea name="comment" rows="3" placeholder="Tell us how the photography, cinema, and studio experience felt on your special day..." required maxlength="2500"></textarea>
+            </label>
+
+            <label class="form-wide">Heartfelt Best Wishes & Blessings (Optional)
+              <textarea name="best_wishes" rows="2" placeholder="Send your warm blessings and wishes for the couple, family, or Cherry Captures..." maxlength="1500"></textarea>
+            </label>
+
+            <label class="form-wide">Instagram Handle (Optional)
+              <input name="instagram_handle" type="text" placeholder="e.g. @ananya_rohit (for link on your review)" maxlength="100" />
+            </label>
+          </div>
+
+          <div class="review-dialog-footer">
+            <button class="button button-gold" type="submit" id="submit-review-btn">
+              <span>Publish Review & Best Wishes ↗</span>
+            </button>
+            <p class="review-form-feedback" id="review-form-feedback" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </dialog>
 
     <!-- Home Call to Action -->
     <section class="home-cta section-wrap">
