@@ -11,7 +11,7 @@
   <link rel="icon" href="public/cherry-captures-logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
 </head>
@@ -56,8 +56,17 @@
   </header>
 
   <main>
-    <!-- Hero Section (Seamless Ivory Luxury Theme with Nikon Showcase) -->
+    <!-- Hero Section (Seamless Ivory Luxury Theme with Nikon Showcase & Landing Video Background) -->
     <section class="hero-themed-section" id="hero">
+      <!-- Landing Page Video Background -->
+      <div class="hero-video-bg-wrap" aria-hidden="true">
+        <video class="hero-video-bg" autoplay muted loop playsinline poster="public/cherry-hero-ai.png" data-hero-video>
+          <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto/glide-over-coastal-beach.mp4" type="video/mp4" />
+          <img src="public/cherry-hero-ai.png" alt="" />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+
       <div class="hero-themed-grid">
         <div class="hero-themed-left">
           <!-- Top Badges Row -->
@@ -175,7 +184,23 @@
             </div>
           </article>
 
-          <!-- Card 5: Car Delivery Shoots (Last of the List) -->
+          <!-- Card 5: Personal Shoots (After Half-Saree Function) -->
+          <article class="ad-photo-card">
+            <img src="public/indian-personal-portrait-realistic.png" alt="Indian Personal Shoot and Editorial Portrait Photography" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">PERSONAL SHOOTS</span>
+                <span class="ad-card-insta-icon">✨ PORTRAITS &amp; FOLIOS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Personal &amp; Creative Portrait Shoots</h3>
+                <p class="ad-card-desc">Artistic individual portraits, maternity milestones, fashion model folios, and creative personal branding in dramatic studio lighting.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">View Personal Folios ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Car Delivery Shoots (Last of the List) -->
           <article class="ad-photo-card">
             <img src="public/indian-car-delivery-realistic.png" alt="Luxury Car Delivery Celebration Shoot" loading="lazy" />
             <div class="ad-photo-overlay">
@@ -264,6 +289,21 @@
                 <h3 class="ad-card-title">Half-Saree Functions (Langa Voni)</h3>
                 <p class="ad-card-desc">Traditional coming-of-age portraits in Kanchipuram silk, authentic temple jewelry &amp; family rituals.</p>
                 <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Explore Half-Saree Reels ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-personal-portrait-realistic.png" alt="Indian Personal Shoot and Editorial Portrait Photography" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">PERSONAL SHOOTS</span>
+                <span class="ad-card-insta-icon">✨ PORTRAITS &amp; FOLIOS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Personal &amp; Creative Portrait Shoots</h3>
+                <p class="ad-card-desc">Artistic individual portraits, maternity milestones, fashion model folios, and creative personal branding in dramatic studio lighting.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">View Personal Folios ↗</a>
               </div>
             </div>
           </article>
@@ -573,6 +613,7 @@
                 <option value="Romantic Pre-Wedding Shoot">Romantic Pre-Wedding Shoot</option>
                 <option value="Birthday & Milestone Celebration">Birthday & Milestone Celebration</option>
                 <option value="Half-Saree Function (Langa Voni)">Half-Saree Function (Langa Voni)</option>
+                <option value="Personal Shoots & Portraits">Personal Shoots & Portraits</option>
                 <option value="Luxury Car & Vehicle Delivery">Luxury Car & Vehicle Delivery</option>
                 <option value="Instagram Reels & Video Shoot">Instagram Reels & Video Shoot</option>
                 <option value="Heartfelt Wishes & Blessings">Heartfelt Wishes & Blessings</option>

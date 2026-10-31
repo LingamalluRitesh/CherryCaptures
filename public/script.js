@@ -61,6 +61,16 @@ function initIntroLoader() {
 }
 initIntroLoader();
 
+// Landing Page Hero Video Helper
+function initHeroVideo() {
+  const heroVideo = document.querySelector('[data-hero-video]');
+  if (!heroVideo) return;
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+  heroVideo.play().catch(() => {});
+}
+initHeroVideo();
+
 // -------------------------------------------------------------
 // Dynamic Data Loaders (Ads, Reviews, Projects, Experience, Media)
 // -------------------------------------------------------------
@@ -89,6 +99,9 @@ function getAdPhoto(ad) {
   }
   if (t.includes("half-saree") || t.includes("halfsaree") || t.includes("langa") || t.includes("voni") || t.includes("ritusuddhi")) {
     return "public/indian-halfsaree-realistic.png";
+  }
+  if (t.includes("personal") || t.includes("portrait") || t.includes("maternity") || t.includes("fashion") || t.includes("folio")) {
+    return "public/indian-personal-portrait-realistic.png";
   }
   if (t.includes("birthday") || t.includes("kids") || t.includes("smash") || t.includes("child") || t.includes("cake")) {
     return "public/indian-birthday-realistic.png";

@@ -48,13 +48,15 @@
   --muted: #4e4a44;
   --muted-2: #706b63;
 
-  /* Segmented Typography */
+  /* Segmented Luxury Typography System - Distinct fonts for main title and remaining sections */
+  --font-title-hero: "Cinzel Decorative", "Cinzel", Georgia, serif;
   --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
-  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --font-script: "Alex Brush", cursive, Georgia, serif;
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-accent: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --serif: var(--font-serif);
+  --serif: var(--font-heading);
   --sans: var(--font-sans);
 
   --width: min(1240px, calc(100% - 64px));
@@ -411,7 +413,7 @@ img {
 main { position: relative; z-index: 10; }
 
 /* -------------------------------------------------------------
-   Hero Section (Royal Ivory Theme with Nikon Showcase & No Spaces)
+   Hero Section (Royal Ivory Theme with Landing Video Background & Nikon Showcase)
    ------------------------------------------------------------- */
 .hero-themed-section {
   min-height: calc(100svh - 82px);
@@ -421,9 +423,34 @@ main { position: relative; z-index: 10; }
   align-items: center;
   justify-content: center;
   padding: 60px 0 80px;
-  background: linear-gradient(180deg, #ffffff 0%, #faf7f2 60%, #f6f1e8 100%);
+  background-color: #faf7f2;
   border-bottom: 1px solid rgba(179, 135, 56, 0.16);
   overflow: hidden;
+}
+
+.hero-video-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.92) contrast(1.05) saturate(1.15);
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(250, 247, 242, 0.82) 50%, rgba(246, 241, 232, 0.88) 100%);
+  pointer-events: none;
 }
 
 .hero-themed-grid {
@@ -495,11 +522,11 @@ main { position: relative; z-index: 10; }
 
 .hero-theme-headline {
   margin: 0 0 22px;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(42px, 5.2vw, 68px);
+  font-family: var(--font-title-hero);
+  font-size: clamp(38px, 4.8vw, 62px);
   font-weight: 700;
-  line-height: 1.14;
-  letter-spacing: -0.015em;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
   color: #141414;
 }
 
@@ -1740,8 +1767,9 @@ main { position: relative; z-index: 10; }
 
 .page-hero h1 {
   margin: 20px 0 14px;
-  font: 700 clamp(48px, 6.5vw, 84px)/1 'Playfair Display', Georgia, serif;
+  font: 700 clamp(44px, 5.8vw, 76px)/1.08 var(--font-title-hero);
   color: #141414;
+  letter-spacing: -0.01em;
 }
 
 .page-hero h1 em {
