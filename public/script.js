@@ -41,22 +41,25 @@ function setContactLinks(settings) {
 }
 
 // -------------------------------------------------------------
-// Site-Wide Background Video Playback Assurance
+// Opening Animation Handler (Logo & Nikon Camera)
 // -------------------------------------------------------------
-const siteVideos = document.querySelectorAll("[data-site-video], [data-hero-video]");
-siteVideos.forEach((video) => {
-  video.muted = true;
-  video.playsInline = true;
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      const resume = () => { video.play().catch(() => {}); };
-      document.addEventListener("touchstart", resume, { once: true });
-      document.addEventListener("scroll", resume, { once: true });
-      document.addEventListener("click", resume, { once: true });
-    });
-  }
-});
+function initIntroLoader() {
+  const loader = document.getElementById("site-intro-loader");
+  if (!loader) return;
+  const dismiss = () => {
+    if (loader.classList.contains("loader-dismissed")) return;
+    loader.classList.add("loader-dismissed");
+    setTimeout(() => {
+      if (loader.parentNode) loader.remove();
+    }, 650);
+  };
+  const timer = setTimeout(dismiss, 1800);
+  loader.addEventListener("click", () => {
+    clearTimeout(timer);
+    dismiss();
+  });
+}
+initIntroLoader();
 
 // -------------------------------------------------------------
 // Dynamic Data Loaders (Ads, Reviews, Projects, Experience, Media)

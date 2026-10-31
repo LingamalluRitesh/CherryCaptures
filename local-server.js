@@ -53,9 +53,17 @@ async function serveFile(request, response, pathname) {
     }
   }
 
+  let ext = extname(file).toLowerCase();
+  let contentType = contentTypes[ext] || "application/octet-stream";
+  if (data && data[0] === 0xff && data[1] === 0xd8) {
+    contentType = "image/jpeg";
+  } else if (data && data[0] === 0x89 && data[1] === 0x50 && data[2] === 0x4e && data[3] === 0x47) {
+    contentType = "image/png";
+  }
+
   response.writeHead(200, {
     ...secureHeaders(),
-    "Content-Type": contentTypes[extname(file).toLowerCase()] || "application/octet-stream",
+    "Content-Type": contentType,
     "Cache-Control": extname(file) === ".html" ? "no-cache" : "public, max-age=3600"
   });
   if (request.method === "HEAD") response.end();

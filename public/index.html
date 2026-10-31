@@ -16,14 +16,24 @@
   <script src="script.js" defer></script>
 </head>
 <body data-page="home">
-  <!-- Site-Wide Cinematic Background Video (Visible on Entire Website) -->
-  <div class="site-bg-video-wrap" aria-hidden="true">
-    <video class="site-bg-video" autoplay muted loop playsinline poster="public/cherry-hero-ai.png" data-site-video>
-      <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto/glide-over-coastal-beach.mp4" type="video/mp4" />
-      <img src="public/cherry-hero-ai.png" alt="" />
-    </video>
-    <div class="site-bg-vignette"></div>
-    <div class="site-bg-grain"></div>
+  <!-- Opening Animation (Logo & Nikon Camera) -->
+  <div id="site-intro-loader" class="site-intro-loader" aria-hidden="true">
+    <div class="intro-loader-content">
+      <div class="intro-camera-halo">
+        <img src="public/nikon-camera-showcase.png" onerror="this.onerror=null; this.src='nikon-camera-showcase.png';" alt="Nikon Cinema Camera" class="intro-camera-pic" />
+        <div class="intro-shutter-ring"></div>
+      </div>
+      <div class="intro-brand-row">
+        <img src="public/cherry-captures-logo.jpeg" alt="Cherry Captures Logo" class="intro-logo-pic" />
+        <div class="intro-brand-words">
+          <span class="intro-brand-main">CHERRY <b>CAPTURES</b></span>
+          <span class="intro-brand-tag">★ NIKON 4K CINEMA · WEDDINGS &amp; CELEBRATIONS</span>
+        </div>
+      </div>
+      <div class="intro-progress-bar">
+        <div class="intro-progress-fill"></div>
+      </div>
+    </div>
   </div>
 
   <header class="site-header">
@@ -46,7 +56,7 @@
   </header>
 
   <main>
-    <!-- Hero Section (Screenshot 1 Theme) -->
+    <!-- Hero Section (Seamless Ivory Luxury Theme with Nikon Showcase) -->
     <section class="hero-themed-section" id="hero">
       <div class="hero-themed-grid">
         <div class="hero-themed-left">
@@ -71,7 +81,7 @@
 
           <!-- Master Photographer & Studio Subtext -->
           <p class="hero-theme-bio">
-            With over 30+ years of mastery under the lens of Narasimharao, we turn your weddings, milestones, and portraits into cinematic pieces of art.
+            With over 30+ years of mastery under the lens of Cherry, we turn your weddings, milestones, and portraits into cinematic pieces of art.
           </p>
 
           <!-- Dual Pill Action Buttons -->
@@ -81,10 +91,10 @@
           </div>
         </div>
 
-        <!-- Right Hero Showcase Frame with Glowing Golden Border -->
+        <!-- Right Hero Showcase Frame with Glowing Golden Border (Nikon Camera) -->
         <div class="hero-themed-right">
           <div class="hero-showcase-frame">
-            <img src="public/camera-mode-dial-hero.png" alt="Cinema Camera Mode Dial - Studio Gear Showcase" fetchpriority="high" />
+            <img src="public/nikon-camera-showcase.png" onerror="this.onerror=null; this.src='nikon-camera-showcase.png';" alt="Professional Nikon Z9 Camera - Studio Gear Showcase" fetchpriority="high" />
           </div>
         </div>
       </div>
@@ -291,7 +301,7 @@
       </div>
     </section>
 
-    <!-- OUR HERITAGE Section (Screenshot 2 Theme) -->
+    <!-- OUR HERITAGE Section (Seamless Royal Ivory Theme) -->
     <section class="heritage-luxury-section" id="heritage" aria-label="Our Heritage & Master Photographer Story">
       <div class="heritage-container">
         <div class="heritage-header">
@@ -300,27 +310,27 @@
             Over 30 Years of Preserving Royal<br>Heritage &amp; Love
           </h2>
           <p class="heritage-intro-text">
-            Based in the heart of Guntur, Andhra Pradesh, Narasimha Stills has been the definitive choice for families seeking unmatched photographic brilliance.
+            Based in the heart of Guntur, Andhra Pradesh, Cherry Captures has been the definitive choice for families seeking unmatched photographic brilliance.
           </p>
         </div>
 
         <div class="heritage-showcase-grid">
           <!-- Left Column: Luxury Wedding Rings Image -->
           <div class="heritage-visual-card">
-            <img src="public/indian-wedding-rings-luxury.png" alt="Royal Gold Wedding Rings on Lace - Indian Wedding Heritage" loading="lazy" />
+            <img src="public/indian-wedding-rings-luxury.png" onerror="this.onerror=null; this.src='indian-wedding-rings-luxury.png';" alt="Royal Gold Wedding Rings on Lace - Indian Wedding Heritage" />
           </div>
 
           <!-- Right Column: Story & 2 White Floating Cards -->
           <div class="heritage-info-card">
-            <h3 class="heritage-story-title">The Artistic Touch of Narasimharao</h3>
+            <h3 class="heritage-story-title">The Artistic Touch of Cherry</h3>
             <p class="heritage-story-desc">
-              Led by master photographer Narasimharao, our artistic philosophy blends traditional South Indian reverence with contemporary cinematic storytelling.
+              Led by master photographer Cherry, our artistic philosophy blends traditional South Indian reverence with contemporary cinematic storytelling.
             </p>
 
             <div class="heritage-floating-cards">
               <div class="heritage-white-box">
                 <h4 class="white-box-title">Cinematic 4K Gear</h4>
-                <p class="white-box-text">Sony &amp; RED 4K sensors, prime lenses, &amp; aerial drone tech.</p>
+                <p class="white-box-text">Nikon &amp; Sony 4K sensors, prime lenses, &amp; aerial drone tech.</p>
               </div>
 
               <div class="heritage-white-box">
