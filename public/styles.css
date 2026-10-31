@@ -431,13 +431,16 @@ main { position: relative; z-index: 10; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.92) contrast(1.05) saturate(1.15);
+  filter: brightness(1.04) contrast(1.15) saturate(1.22);
 }
 
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(250, 247, 242, 0.82) 50%, rgba(246, 241, 232, 0.88) 100%);
+  /* Soft, semi-transparent gradient providing high video visibility and motion */
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.48) 0%, rgba(250, 247, 242, 0.32) 48%, rgba(250, 247, 242, 0.12) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 55%, rgba(250, 247, 242, 0.32) 100%);
   pointer-events: none;
 }
 
@@ -516,13 +519,14 @@ main { position: relative; z-index: 10; }
   line-height: 1.18;
   letter-spacing: -0.01em;
   color: #141414;
+  text-shadow: 0 2px 14px rgba(255, 255, 255, 0.95), 0 1px 3px rgba(255, 255, 255, 0.85);
 }
 
 .theme-highlight-gold {
   color: #b38738;
   font-weight: 700;
   display: inline-block;
-  text-shadow: none;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.9);
 }
 
 .theme-cursor {
@@ -543,9 +547,10 @@ main { position: relative; z-index: 10; }
   gap: 10px;
   padding: 12px 24px;
   border-radius: 999px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
   border: 1.5px solid #d4a745;
-  box-shadow: 0 8px 24px rgba(179, 135, 56, 0.15);
+  box-shadow: 0 8px 24px rgba(179, 135, 56, 0.18), 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 22px;
   max-width: 100%;
 }
@@ -573,7 +578,9 @@ main { position: relative; z-index: 10; }
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.75;
-  color: #4a4742;
+  color: #242220;
+  font-weight: 500;
+  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.95);
 }
 
 .hero-theme-ctas {
