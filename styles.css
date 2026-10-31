@@ -151,70 +151,58 @@ img {
   }
 }
 
-.intro-camera-halo {
+.intro-logo-halo {
   position: relative;
-  width: 170px;
-  height: 170px;
+  width: 140px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 50%, rgba(250, 247, 242, 0.8) 100%);
+  background: #ffffff;
   border: 2px solid rgba(179, 135, 56, 0.45);
-  box-shadow: 0 16px 45px rgba(179, 135, 56, 0.24), 0 0 0 8px rgba(179, 135, 56, 0.08);
+  box-shadow: 0 16px 45px rgba(179, 135, 56, 0.25), 0 0 0 8px rgba(179, 135, 56, 0.08);
+  animation: introLogoPulse 2.4s ease-in-out infinite;
 }
 
-.intro-camera-pic {
-  width: 130px;
-  height: 100px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
-  animation: introCameraPulse 2.4s ease-in-out infinite;
+@keyframes introLogoPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 16px 45px rgba(179, 135, 56, 0.25), 0 0 0 8px rgba(179, 135, 56, 0.08); }
+  50% { transform: scale(1.05); box-shadow: 0 20px 55px rgba(179, 135, 56, 0.38), 0 0 0 12px rgba(179, 135, 56, 0.12); }
 }
 
-@keyframes introCameraPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+.intro-logo-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(179, 135, 56, 0.35);
+  display: block;
 }
 
-.intro-shutter-ring {
+.intro-gold-ring {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
   border: 2px dashed #b38738;
-  animation: introShutterRotate 14s linear infinite;
+  animation: introRingRotate 14s linear infinite;
 }
 
-@keyframes introShutterRotate {
+@keyframes introRingRotate {
   to { transform: rotate(360deg); }
-}
-
-.intro-brand-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.intro-logo-pic {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #b38738;
-  box-shadow: 0 4px 16px rgba(179, 135, 56, 0.3);
 }
 
 .intro-brand-words {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
 .intro-brand-main {
-  font-family: var(--font-display);
-  font-size: 21px;
+  font-family: var(--font-title-hero);
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: #141414;
 }
 
@@ -225,10 +213,10 @@ img {
 .intro-brand-tag {
   font-family: var(--font-accent);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   color: #7a5c24;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 .intro-progress-bar {
