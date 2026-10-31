@@ -10,6 +10,8 @@ const dbStatusBadge = document.querySelector("#db-status-badge");
 const statTotal = document.querySelector("#stat-total");
 const statNew = document.querySelector("#stat-new");
 const statPromos = document.querySelector("#stat-promos");
+const statAds = document.querySelector("#stat-ads");
+const statReviews = document.querySelector("#stat-reviews");
 const tabEnquiryCount = document.querySelector("#tab-enquiry-count");
 const tabAdsCount = document.querySelector("#tab-ads-count");
 const tabReviewsCount = document.querySelector("#tab-reviews-count");
@@ -310,6 +312,12 @@ function renderAds() {
     adsList.append(card);
   });
 
+  if (statReviews) {
+    statReviews.textContent = String(reviews.length);
+  }
+  if (statAds) {
+    statAds.textContent = String(ads.filter((a) => a.active).length || ads.length);
+  }
   if (statPromos) {
     const activeAdsCount = ads.filter((a) => a.active).length;
     statPromos.textContent = `${activeAdsCount} ads · ${reviews.length} reviews`;
@@ -406,6 +414,12 @@ function renderReviews() {
     reviewsList.append(card);
   });
 
+  if (statReviews) {
+    statReviews.textContent = String(reviews.length);
+  }
+  if (statAds) {
+    statAds.textContent = String(ads.filter((a) => a.active).length || ads.length);
+  }
   if (statPromos) {
     const activeAdsCount = ads.filter((a) => a.active).length;
     statPromos.textContent = `${activeAdsCount} ads · ${reviews.length} reviews`;
@@ -682,10 +696,34 @@ async function checkSession() {
 }
 
 if (loginForm) {
+  const togglePasswordBtn = document.querySelector("#toggle-password-btn");
+  if (togglePasswordBtn) {
+    togglePasswordBtn.addEventListener("click", () => {
+      const pwdInput = document.querySelector("#admin-pwd-input") || loginForm.elements.password;
+      if (!pwdInput) return;
+      const isText = pwdInput.type === "text";
+      pwdInput.type = isText ? "password" : "text";
+      togglePasswordBtn.textContent = isText ? "👁️ Show" : "🔒 Hide";
+    });
+  }
+
+  const quickFillBtn = document.querySelector("#quick-fill-pwd");
+  if (quickFillBtn) {
+    quickFillBtn.addEventListener("click", () => {
+      const pwdInput = document.querySelector("#admin-pwd-input") || loginForm.elements.password;
+      if (pwdInput) {
+        pwdInput.value = "Cherry@2026";
+        pwdInput.focus();
+        if (loginMessage) loginMessage.textContent = "";
+      }
+    });
+  }
+
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const password = loginForm.elements.password.value;
-    loginMessage.textContent = "Signing in…";
+    const password = (document.querySelector("#admin-pwd-input") || loginForm.elements.password).value;
+    loginMessage.className = "admin-message-banner banner-info";
+    loginMessage.textContent = "Verifying master studio credentials…";
     try {
       await api("/api/admin/login", {
         method: "POST",
@@ -695,7 +733,8 @@ if (loginForm) {
       loginMessage.textContent = "";
       showAdmin();
     } catch (err) {
-      loginMessage.textContent = err.message;
+      loginMessage.className = "admin-message-banner banner-error";
+      loginMessage.textContent = err.message || "That password didn't match. Try again.";
     }
   });
 }

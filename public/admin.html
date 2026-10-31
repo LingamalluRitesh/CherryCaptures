@@ -9,7 +9,7 @@
   <link rel="icon" href="public/cherry-captures-logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="admin.css" />
   <script src="admin.js" defer></script>
@@ -25,37 +25,77 @@
     <div class="site-bg-grain"></div>
   </div>
   <header class="admin-header">
-    <a class="brand" href="index.html">
-      <span class="brand-mark"><img src="public/cherry-captures-logo.jpeg" alt="" /></span>
-      <span class="brand-word">CHERRY <b>CAPTURES</b></span>
-    </a>
+    <div class="admin-header-brand-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><img src="public/cherry-captures-logo.jpeg" alt="" /></span>
+        <span class="brand-word">CHERRY <b>CAPTURES</b></span>
+      </a>
+      <span class="admin-top-badge">★ STUDIO DESK</span>
+    </div>
     <div class="admin-header-right">
       <span class="admin-db-badge" id="db-status-badge" title="Database status">Checking database…</span>
       <span class="admin-secure"><i></i> PRIVATE ADMIN</span>
-      <a class="admin-site-link" href="index.html" target="_blank">VIEW WEBSITE ↗</a>
-      <button class="admin-logout" id="logout-button" type="button" hidden>LOG OUT ↗</button>
+      <a class="admin-nav-pill-btn pill-btn-white" href="index.html" target="_blank">VIEW WEBSITE ↗</a>
+      <button class="admin-nav-pill-btn pill-btn-gold" id="logout-button" type="button" hidden>LOG OUT ↗</button>
     </div>
   </header>
 
   <main class="admin-main">
-    <!-- Login Panel -->
-    <section class="admin-login" id="login-panel">
-      <div class="admin-login-art">
-        <div class="admin-art-orbit"></div>
-        <img src="public/cherry-captures-logo.jpeg" alt="" />
-        <span>CAPTURE · CREATE · INSPIRE</span>
-      </div>
-      <div class="admin-login-copy">
-        <p class="eyebrow"><span></span> CHERRY CAPTURES / PRIVATE</p>
-        <h1>Welcome<br /><em>back.</em></h1>
-        <p>Sign in to manage enquiries, customer reviews, scrollable ads, portfolio projects, and site media.</p>
-        <form id="login-form">
-          <label>Admin password
-            <input name="password" type="password" autocomplete="current-password" required autofocus placeholder="Enter your password (e.g. Cherry@2026)" />
-          </label>
-          <button class="button button-gold" type="submit">Enter the studio <span>↗</span></button>
-          <p class="admin-message" id="login-message" role="status"></p>
-        </form>
+    <!-- Login Panel (Themed to Screenshots: Gold Border Frame + Studio Desk Console) -->
+    <section class="admin-login-wrapper" id="login-panel">
+      <div class="admin-login-card">
+        <!-- Left Showcase Frame matching Screenshot 1 -->
+        <div class="admin-login-showcase">
+          <div class="admin-showcase-frame">
+            <img src="public/camera-mode-dial-hero.png" alt="Cinema Camera Mode Dial" />
+            <div class="showcase-frame-overlay">
+              <span class="showcase-pill-badge">★ Guntur's Premier Photography Studio</span>
+              <div class="showcase-quote-box">
+                <span class="quote-mark">“</span>
+                <p>Artistry through precision, tradition &amp; vision.</p>
+                <span class="quote-mark">”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Login Console Form -->
+        <div class="admin-login-console">
+          <div class="login-badge-group">
+            <span class="hero-pill-badge hero-pill-gold">★ Studio Master Console</span>
+            <span class="hero-pill-badge hero-pill-teal"><span class="badge-status-dot"></span> Private Access</span>
+          </div>
+
+          <h1 class="admin-login-title">
+            Welcome to <span class="theme-highlight-gold">Studio Desk<span class="theme-cursor">|</span></span>
+          </h1>
+
+          <p class="admin-login-sub">
+            Sign in with master credentials to manage royal wedding enquiries, customer reviews, scrollable ads, and 4K cinema portfolio.
+          </p>
+
+          <form id="login-form" class="admin-modern-form">
+            <div class="input-group-modern">
+              <label for="admin-pwd-input">MASTER ADMIN PASSWORD</label>
+              <div class="password-input-wrap">
+                <input id="admin-pwd-input" name="password" type="password" autocomplete="current-password" required autofocus placeholder="Enter password (e.g. Cherry@2026)" />
+                <button type="button" id="toggle-password-btn" class="pwd-toggle-btn" aria-label="Toggle password visibility">👁️ Show</button>
+              </div>
+            </div>
+
+            <div class="login-quick-row">
+              <button type="button" id="quick-fill-pwd" class="quick-pwd-chip">
+                <span>🔑 Click to fill:</span> <b>Cherry@2026</b>
+              </button>
+            </div>
+
+            <button class="theme-pill-btn btn-gold-pill login-submit-btn" type="submit">
+              Unlock Studio Console <span>↗</span>
+            </button>
+
+            <div class="admin-message-banner" id="login-message" role="status"></div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -63,27 +103,53 @@
     <section class="admin-app" id="admin-app" hidden>
       <div class="admin-title-row">
         <div>
-          <p class="eyebrow"><span></span> THE STUDIO DESK</p>
-          <h1>Your <em>dashboard.</em></h1>
+          <div class="hero-badges-group" style="margin-bottom: 10px;">
+            <span class="hero-pill-badge hero-pill-gold">★ Master Studio Console</span>
+            <span class="hero-pill-badge hero-pill-teal"><span class="badge-status-dot"></span> System Live</span>
+          </div>
+          <h1 class="admin-hero-title">
+            Master <span class="theme-highlight-gold">Studio Desk<span class="theme-cursor">|</span></span>
+          </h1>
         </div>
-        <span class="admin-date" id="today-date"></span>
+        <div class="admin-date-box">
+          <span class="date-icon">📅</span>
+          <span class="admin-date" id="today-date"></span>
+        </div>
       </div>
 
-      <div class="admin-stats">
-        <article>
-          <span>ALL ENQUIRIES</span>
-          <b id="stat-total">0</b>
-          <small>Every story that found its way here</small>
+      <div class="admin-stats-grid">
+        <article class="admin-stat-card">
+          <div class="stat-top">
+            <span class="stat-badge">ALL ENQUIRIES</span>
+            <span class="stat-icon">💌</span>
+          </div>
+          <b class="stat-value" id="stat-total">0</b>
+          <small class="stat-label">Total booking enquiries received</small>
         </article>
-        <article>
-          <span>NEEDS A REPLY</span>
-          <b id="stat-new">0</b>
-          <small>New conversations to pick up</small>
+        <article class="admin-stat-card highlight-card">
+          <div class="stat-top">
+            <span class="stat-badge badge-reply">NEEDS A REPLY</span>
+            <span class="live-dot-green"></span>
+          </div>
+          <b class="stat-value" id="stat-new">0</b>
+          <small class="stat-label">Pending client conversations</small>
         </article>
-        <article>
-          <span>ACTIVE ADS & REVIEWS</span>
-          <b id="stat-promos">0</b>
-          <small>Live on the public website</small>
+        <article class="admin-stat-card">
+          <div class="stat-top">
+            <span class="stat-badge">SCROLLABLE ADS</span>
+            <span class="stat-icon">📢</span>
+          </div>
+          <b class="stat-value" id="stat-ads">6</b>
+          <small class="stat-label">Live right-to-left marquee ads</small>
+          <span id="stat-promos" style="display:none;"></span>
+        </article>
+        <article class="admin-stat-card">
+          <div class="stat-top">
+            <span class="stat-badge">REVIEWS &amp; WISHES</span>
+            <span class="stat-icon">🌸</span>
+          </div>
+          <b class="stat-value" id="stat-reviews">0</b>
+          <small class="stat-label">Client blessings &amp; 5-star ratings</small>
         </article>
       </div>
 
