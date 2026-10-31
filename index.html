@@ -11,7 +11,7 @@
   <link rel="icon" href="public/cherry-captures-logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
 </head>
@@ -46,33 +46,58 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="hero-kicker"><span></span> CHERRY CAPTURES · WEDDING & EVENT CINEMA</p>
-        <h1 class="hero-title">
-          <span class="title-line">Soulful moments.</span>
-          <span class="title-line title-accent">Timeless frames<span class="title-period">.</span></span>
-        </h1>
-        <p class="hero-description">Specializing in grand South Indian weddings, romantic pre-wedding shoots, auspicious half-saree (Langa Voni) ceremonies, and joyful birthday celebrations. Captured with authentic warmth, artistic lighting, and 4K cinema.</p>
-        <div class="hero-buttons">
-          <a class="button button-gold" href="contact.html">Book Your Date <span>↗</span></a>
-          <a class="button button-quiet" href="portfolio.html">View Portfolio <span>↗</span></a>
+    <!-- Hero Section (Screenshot 1 Theme) -->
+    <section class="hero-themed-section" id="hero">
+      <div class="hero-themed-grid">
+        <div class="hero-themed-left">
+          <!-- Top Badges Row -->
+          <div class="hero-badges-group">
+            <span class="hero-pill-badge hero-pill-gold">★ Guntur's Premier Photography Studio</span>
+            <span class="hero-pill-badge hero-pill-teal"><span class="badge-status-dot"></span> Booking Open for 2026 Season</span>
+          </div>
+
+          <!-- Main Serif Title with Gold Highlight & Cursor -->
+          <h1 class="hero-theme-headline">
+            Capturing <span class="theme-highlight-gold">Timeless<span class="theme-cursor">|</span></span><br>
+            Moments &amp; Memories
+          </h1>
+
+          <!-- Rounded Quote Pill Box -->
+          <div class="hero-quote-container">
+            <span class="quote-sym">“</span>
+            <p class="quote-content">Weddings pass in a heartbeat; cinematic photos last forever.</p>
+            <span class="quote-sym">”</span>
+          </div>
+
+          <!-- Master Photographer & Studio Subtext -->
+          <p class="hero-theme-bio">
+            With over 30+ years of mastery under the lens of Narasimharao, we turn your weddings, milestones, and portraits into cinematic pieces of art.
+          </p>
+
+          <!-- Dual Pill Action Buttons -->
+          <div class="hero-theme-ctas">
+            <a class="theme-pill-btn btn-gold-pill" href="contact.html">Reserve Event Date</a>
+            <a class="theme-pill-btn btn-white-pill" href="portfolio.html">Explore Gallery</a>
+          </div>
+        </div>
+
+        <!-- Right Hero Showcase Frame with Glowing Golden Border -->
+        <div class="hero-themed-right">
+          <div class="hero-showcase-frame">
+            <img src="public/camera-mode-dial-hero.png" alt="Cinema Camera Mode Dial - Studio Gear Showcase" fetchpriority="high" />
+          </div>
         </div>
       </div>
-      <div class="hero-side-note"><span class="side-rule"></span><span>PRESERVING TRADITION<br />& SACRED RITUALS</span></div>
-      <a class="hero-scroll" href="#ads-section"><span class="scroll-dot"></span>SCROLL TO EXPLORE</a>
-      <div class="hero-counter"><span>01</span><i></i><span>05</span></div>
     </section>
 
-    <!-- Photo-Scrolling Ads Marquee Section (Below Landing Page) -->
+    <!-- Enlarged Photo-Scrolling Ads Marquee Section (Below Hero) -->
     <section class="ads-photo-marquee-section" id="ads-section" aria-label="Featured Photography Services & Showcases">
       <div class="section-wrap marquee-header-row">
         <div class="marquee-title-group">
-          <div class="eyebrow"><span></span> SPECIALIZED PHOTOGRAPHY SERVICES</div>
+          <div class="eyebrow"><span></span> SPECIALIZED PHOTOGRAPHY SERVICES &amp; ADS</div>
           <h2 class="marquee-heading">Cherish life’s <em>greatest chapters.</em></h2>
         </div>
-        <span class="marquee-pause-hint">HOVER TO PAUSE ⏸ · CLICK TO EXPLORE ON INSTAGRAM ↗</span>
+        <span class="marquee-pause-hint">HOVER TO PAUSE ⏸ · SMOOTH AUTO-SCROLL ◀</span>
       </div>
       <div class="photo-marquee-wrap">
         <div class="photo-marquee-track" id="photo-marquee-track">
@@ -85,7 +110,7 @@
                 <span class="ad-card-insta-icon">💍 MUHURTHAM</span>
               </div>
               <div class="ad-photo-bottom">
-                <h3 class="ad-card-title">Marriage & Wedding Shoots</h3>
+                <h3 class="ad-card-title">Marriage &amp; Wedding Shoots</h3>
                 <p class="ad-card-desc">Sacred Pellikuthuru, Muhurtham, Akshata blessings, and grand reception cinema captured in authentic 4K HDR.</p>
                 <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">View Wedding Reels ↗</a>
               </div>
@@ -118,7 +143,7 @@
               </div>
               <div class="ad-photo-bottom">
                 <h3 class="ad-card-title">Birthday Milestone Shoots</h3>
-                <p class="ad-card-desc">Joyful milestone 1st birthdays, cake smash fun, family candids & fairy-light party highlights.</p>
+                <p class="ad-card-desc">Joyful milestone 1st birthdays, cake smash fun, family candids &amp; fairy-light party highlights.</p>
                 <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">See Birthday Stories ↗</a>
               </div>
             </div>
@@ -134,7 +159,7 @@
               </div>
               <div class="ad-photo-bottom">
                 <h3 class="ad-card-title">Half-Saree Functions (Langa Voni)</h3>
-                <p class="ad-card-desc">Traditional coming-of-age portraits in Kanchipuram silk, authentic temple jewelry & family rituals.</p>
+                <p class="ad-card-desc">Traditional coming-of-age portraits in Kanchipuram silk, authentic temple jewelry &amp; family rituals.</p>
                 <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Explore Half-Saree Reels ↗</a>
               </div>
             </div>
@@ -149,7 +174,7 @@
                 <span class="ad-card-insta-icon">🚗 SHOWROOM CELEBRATION</span>
               </div>
               <div class="ad-photo-bottom">
-                <h3 class="ad-card-title">Car & Vehicle Delivery Shoots</h3>
+                <h3 class="ad-card-title">Car &amp; Vehicle Delivery Shoots</h3>
                 <p class="ad-card-desc">Cinematic celebration of your dream car delivery with ceremonial ribbons, garlands, and 4K reel coverage.</p>
                 <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch Delivery Reels ↗</a>
               </div>
@@ -165,7 +190,98 @@
                 <span class="ad-card-insta-icon">🎬 9:16 VIRAL REELS</span>
               </div>
               <div class="ad-photo-bottom">
-                <h3 class="ad-card-title">Instagram Video & Reels Shoots</h3>
+                <h3 class="ad-card-title">Instagram Video &amp; Reels Shoots</h3>
+                <p class="ad-card-desc">High-energy vertical cinematography, smooth gimbal moves, and viral trend edits crafted for Instagram.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch Creative Reels ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate Set for Seamless Infinite Loop -->
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-wedding-marriage-realistic.png" alt="Indian Marriage and Wedding Ceremony Photography" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">MARRIAGE SHOOTS</span>
+                <span class="ad-card-insta-icon">💍 MUHURTHAM</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Marriage &amp; Wedding Shoots</h3>
+                <p class="ad-card-desc">Sacred Pellikuthuru, Muhurtham, Akshata blessings, and grand reception cinema captured in authentic 4K HDR.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">View Wedding Reels ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-prewedding-realistic.png" alt="Authentic Indian Pre-Wedding Couple Shoot at Sunset" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">PRE-WEDDING</span>
+                <span class="ad-card-insta-icon">✨ SUNSET ROMANCE</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Romantic Pre-Wedding Shoots</h3>
+                <p class="ad-card-desc">Romantic heritage palace, lake, and scenic outdoor shoots with cinematic teaser reels and drone tracking.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch Pre-Wedding Teasers ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-birthday-realistic.png" alt="Indian 1st Birthday Milestone Celebration" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">BIRTHDAY SHOOTS</span>
+                <span class="ad-card-insta-icon">🎂 1ST BIRTHDAYS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Birthday Milestone Shoots</h3>
+                <p class="ad-card-desc">Joyful milestone 1st birthdays, cake smash fun, family candids &amp; fairy-light party highlights.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">See Birthday Stories ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-halfsaree-realistic.png" alt="South Indian Half Saree Langa Voni Function" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">HALF-SAREE</span>
+                <span class="ad-card-insta-icon">🌸 LANGA VONI</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Half-Saree Functions (Langa Voni)</h3>
+                <p class="ad-card-desc">Traditional coming-of-age portraits in Kanchipuram silk, authentic temple jewelry &amp; family rituals.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Explore Half-Saree Reels ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-car-delivery-realistic.png" alt="Luxury Car Delivery Celebration Shoot" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">CAR SHOOTS</span>
+                <span class="ad-card-insta-icon">🚗 SHOWROOM CELEBRATION</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Car &amp; Vehicle Delivery Shoots</h3>
+                <p class="ad-card-desc">Cinematic celebration of your dream car delivery with ceremonial ribbons, garlands, and 4K reel coverage.</p>
+                <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch Delivery Reels ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-photo-card" aria-hidden="true">
+            <img src="public/indian-reels-cinematography-realistic.png" alt="Instagram Video and Cinematic Reels Shoot" loading="lazy" />
+            <div class="ad-photo-overlay">
+              <div class="ad-photo-top">
+                <span class="ad-card-badge">REELS SHOOTS</span>
+                <span class="ad-card-insta-icon">🎬 9:16 VIRAL REELS</span>
+              </div>
+              <div class="ad-photo-bottom">
+                <h3 class="ad-card-title">Instagram Video &amp; Reels Shoots</h3>
                 <p class="ad-card-desc">High-energy vertical cinematography, smooth gimbal moves, and viral trend edits crafted for Instagram.</p>
                 <a class="ad-card-action" href="https://instagram.com/" target="_blank" rel="noreferrer">Watch Creative Reels ↗</a>
               </div>
@@ -175,18 +291,45 @@
       </div>
     </section>
 
-    <!-- Intro Story Section -->
-    <section class="intro section-wrap" id="intro">
-      <div class="eyebrow"><span></span> THE CHERRY CAPTURES PHILOSOPHY</div>
-      <div class="intro-row">
-        <h2>Every sacred ritual.<br />Every <em>joyful laugh.</em></h2>
-        <div class="intro-copy">
-          <p>We believe Indian celebrations are woven with deep traditions, sacred mantras, golden laughter, and unspoken love. From the auspicious morning Muhurtham to joyful Haldi water splashes, romantic pre-wedding conversations, a girl’s proud Half-Saree milestone, and a child’s milestone first birthday — we capture memories you will cherish across generations.</p>
-          <a class="under-link" href="about.html">Get to know our studio <span>↗</span></a>
+    <!-- OUR HERITAGE Section (Screenshot 2 Theme) -->
+    <section class="heritage-luxury-section" id="heritage" aria-label="Our Heritage & Master Photographer Story">
+      <div class="heritage-container">
+        <div class="heritage-header">
+          <span class="heritage-eyebrow">OUR HERITAGE</span>
+          <h2 class="heritage-heading">
+            Over 30 Years of Preserving Royal<br>Heritage &amp; Love
+          </h2>
+          <p class="heritage-intro-text">
+            Based in the heart of Guntur, Andhra Pradesh, Narasimha Stills has been the definitive choice for families seeking unmatched photographic brilliance.
+          </p>
         </div>
-      </div>
-      <div class="intro-signature">
-        <span>PRESERVING CULTURE</span><i>✳</i><span>CRAFTING MEMORIES</span><i>✳</i><span>EST. 2018</span>
+
+        <div class="heritage-showcase-grid">
+          <!-- Left Column: Luxury Wedding Rings Image -->
+          <div class="heritage-visual-card">
+            <img src="public/indian-wedding-rings-luxury.png" alt="Royal Gold Wedding Rings on Lace - Indian Wedding Heritage" loading="lazy" />
+          </div>
+
+          <!-- Right Column: Story & 2 White Floating Cards -->
+          <div class="heritage-info-card">
+            <h3 class="heritage-story-title">The Artistic Touch of Narasimharao</h3>
+            <p class="heritage-story-desc">
+              Led by master photographer Narasimharao, our artistic philosophy blends traditional South Indian reverence with contemporary cinematic storytelling.
+            </p>
+
+            <div class="heritage-floating-cards">
+              <div class="heritage-white-box">
+                <h4 class="white-box-title">Cinematic 4K Gear</h4>
+                <p class="white-box-text">Sony &amp; RED 4K sensors, prime lenses, &amp; aerial drone tech.</p>
+              </div>
+
+              <div class="heritage-white-box">
+                <h4 class="white-box-title">Personalized Touch</h4>
+                <p class="white-box-text">Tailored artistic direction for every couple and family.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

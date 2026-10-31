@@ -149,7 +149,15 @@ function loadAds() {
           action.href = ad.instagram_url || "https://instagram.com/";
           action.target = "_blank";
           action.rel = "noreferrer";
-          action.textContent = "Watch on Instagram ↗";
+          let actionLabel = "Watch on Instagram ↗";
+          const lower = (ad.title || "").toLowerCase();
+          if (lower.includes("wedding") || lower.includes("marriage")) actionLabel = "View Wedding Reels ↗";
+          else if (lower.includes("pre-wedding") || lower.includes("prewedding")) actionLabel = "Watch Pre-Wedding Teasers ↗";
+          else if (lower.includes("birthday")) actionLabel = "See Birthday Stories ↗";
+          else if (lower.includes("half-saree") || lower.includes("halfsaree")) actionLabel = "Explore Half-Saree Reels ↗";
+          else if (lower.includes("car") || lower.includes("vehicle")) actionLabel = "Watch Delivery Reels ↗";
+          else if (lower.includes("reel") || lower.includes("video")) actionLabel = "Watch Creative Reels ↗";
+          action.textContent = actionLabel;
 
           bottomBar.append(title, desc, action);
           overlay.append(topBar, bottomBar);
