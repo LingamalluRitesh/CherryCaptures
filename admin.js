@@ -712,7 +712,7 @@ if (loginForm) {
     quickFillBtn.addEventListener("click", () => {
       const pwdInput = document.querySelector("#admin-pwd-input") || loginForm.elements.password;
       if (pwdInput) {
-        pwdInput.value = "Cherry@2026";
+        pwdInput.value = "cherrycaptures2026";
         pwdInput.focus();
         if (loginMessage) loginMessage.textContent = "";
       }

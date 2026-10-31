@@ -1740,6 +1740,72 @@ main { position: relative; z-index: 10; }
   font-weight: 700;
 }
 
+.footer-dev-attribution {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.footer-dev-attribution .footer-company-link {
+  color: #b38738 !important;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-dev-attribution .footer-company-link:hover {
+  color: #8c6420 !important;
+  text-decoration: underline;
+}
+
+.footer-dev-attribution .footer-builder-link {
+  color: #555149 !important;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-dev-attribution .footer-builder-link:hover {
+  color: #b38738 !important;
+  text-decoration: underline;
+}
+
+.simple-footer {
+  min-height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 18px;
+  padding-bottom: 22px;
+  border-top: 1px solid rgba(179, 135, 56, 0.25);
+  background: #ede7dc;
+  color: #615c54;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+.simple-footer a {
+  color: #b38738;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.simple-footer a:hover {
+  color: #8c6420;
+}
+
 /* -------------------------------------------------------------
    Sub-Pages Common (Page Hero, Portfolio, Services, About, Contact)
    ------------------------------------------------------------- */
@@ -2386,5 +2452,15 @@ main { position: relative; z-index: 10; }
   }
   .footer-links {
     justify-content: center;
+  }
+  .footer-legal,
+  .simple-footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding-top: 20px;
+    padding-bottom: 24px;
   }
 }
