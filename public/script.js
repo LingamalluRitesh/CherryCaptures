@@ -85,6 +85,12 @@ fetch("/api/settings")
 function getAdPhoto(ad) {
   if (ad.image_url) return ad.image_url;
   const t = ((ad.title || "") + " " + (ad.badge || "")).toLowerCase();
+  if (t.includes("convention") || t.includes("hall") || t.includes("mandap") || t.includes("venue")) {
+    return "public/indian-convention-hall-luxury.png";
+  }
+  if (t.includes("dj") || t.includes("music") || t.includes("sound") || t.includes("truss")) {
+    return "public/indian-wedding-dj-music.png";
+  }
   if (t.includes("car") || t.includes("vehicle") || t.includes("delivery") || t.includes("automobile")) {
     return "public/indian-car-delivery-realistic.png";
   }
@@ -172,6 +178,7 @@ function loadAds() {
           else if (lower.includes("birthday")) actionLabel = "See Birthday Stories ↗";
           else if (lower.includes("half-saree") || lower.includes("halfsaree")) actionLabel = "Explore Half-Saree Reels ↗";
           else if (lower.includes("car") || lower.includes("vehicle")) actionLabel = "Watch Delivery Reels ↗";
+          else if (lower.includes("convention") || lower.includes("dj") || lower.includes("hall") || lower.includes("venue")) actionLabel = "Pre-Book Hall & Sound ↗";
           else if (lower.includes("reel") || lower.includes("video")) actionLabel = "Watch Creative Reels ↗";
           action.textContent = actionLabel;
 
@@ -669,7 +676,17 @@ const bookingForm = document.querySelector("#booking-form");
 if (bookingForm) {
   const params = new URLSearchParams(window.location.search);
   const requestedService = params.get("service");
+  const requestedVenue = params.get("venue");
   const serviceSelect = document.querySelector("#service-select");
+  const locationInput = bookingForm.querySelector('input[name="location"]');
+
+  if (requestedVenue && locationInput) {
+    locationInput.value = requestedVenue;
+  }
+  if (requestedVenue && serviceSelect) {
+    const option = [...serviceSelect.options].find((item) => item.text.toLowerCase().includes("convention hall") || item.text.toLowerCase().includes("arrangement"));
+    if (option) option.selected = true;
+  }
   if (requestedService && serviceSelect) {
     const option = [...serviceSelect.options].find((item) => item.text.toLowerCase().includes(requestedService.toLowerCase()));
     if (option) option.selected = true;
@@ -700,3 +717,25 @@ if (bookingForm) {
     }
   });
 }
+
+// -------------------------------------------------------------
+// Venue City Tabs Switcher (Guntur vs Narasaraopeta)
+// -------------------------------------------------------------
+function initVenueCityTabs() {
+  const tabBtns = document.querySelectorAll(".city-tab-btn");
+  const grids = document.querySelectorAll(".venue-cards-grid");
+  if (!tabBtns.length || !grids.length) return;
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.cityTarget;
+      tabBtns.forEach((b) => b.classList.remove("active"));
+      grids.forEach((g) => g.classList.remove("active"));
+
+      btn.classList.add("active");
+      const activeGrid = document.getElementById("venues-" + target);
+      if (activeGrid) activeGrid.classList.add("active");
+    });
+  });
+}
+initVenueCityTabs();
