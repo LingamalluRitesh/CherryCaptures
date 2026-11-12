@@ -13,7 +13,7 @@ const dataDirectory = resolve(root, "data");
 const publicDirectory = resolve(root, "public");
 const dataFile = resolve(dataDirectory, "site-data.json");
 const port = Number(process.env.PORT || 3000);
-const host = process.env.HOST || "127.0.0.1";
+const host = process.env.HOST || "0.0.0.0";
 const adminPassword = process.env.ADMIN_PASSWORD || "cherrycaptures2026";
 const sessionLifetime = 8 * 60 * 60 * 1000;
 const sessions = new Map();
@@ -233,6 +233,35 @@ async function serveFile(request, response, pathname) {
           } catch {}
         }
       }
+
+      // If not on disk, serve a polished luxury gold SVG fallback
+      const fallbackSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+        <defs>
+          <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#dfb455"/>
+            <stop offset="50%" stop-color="#b38738"/>
+            <stop offset="100%" stop-color="#8f651c"/>
+          </linearGradient>
+          <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#241e17"/>
+            <stop offset="100%" stop-color="#0e0d0c"/>
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bg)"/>
+        <circle cx="400" cy="270" r="110" fill="none" stroke="url(#gold)" stroke-width="3" stroke-dasharray="6,6"/>
+        <circle cx="400" cy="270" r="95" fill="none" stroke="url(#gold)" stroke-width="2"/>
+        <path d="M370 240 L430 240 L440 255 L465 255 C470 255 475 260 475 265 L475 305 C475 310 470 315 465 315 L335 315 C330 315 325 310 325 305 L325 265 C325 260 330 255 335 255 L360 255 Z" fill="none" stroke="url(#gold)" stroke-width="4"/>
+        <circle cx="400" cy="285" r="22" fill="none" stroke="url(#gold)" stroke-width="4"/>
+        <text x="400" y="430" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-size="28" font-weight="700" letter-spacing="4" fill="url(#gold)">CHERRY CAPTURES</text>
+        <text x="400" y="465" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="14" font-weight="600" letter-spacing="3" fill="#dfb455" opacity="0.85">LUXURY CINEMA &amp; CELEBRATIONS</text>
+      </svg>`;
+      response.writeHead(200, {
+        ...secureHeaders(),
+        "Content-Type": "image/svg+xml",
+        "Cache-Control": "public, max-age=3600"
+      });
+      response.end(fallbackSvg);
+      return;
     }
     response.writeHead(404, secureHeaders());
     response.end("Not found");
