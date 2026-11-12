@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Studio Console — Cherry Captures</title>
+  <link rel="icon" href="public/cherry-captures-logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+  <script src="admin.js" defer></script>
+</head>
+<body data-admin-page>
+  <header class="admin-header">
+    <div class="admin-header-brand">
+      <span class="admin-brand-icon">
+        <img src="public/cherry-captures-logo.jpeg" onerror="this.onerror=null; this.src='cherry-captures-logo.jpeg';" alt="Cherry Captures" />
+      </span>
+      <div class="admin-brand-meta">
+        <strong>CHERRY CAPTURES</strong>
+        <small>MASTER STUDIO CONSOLE</small>
+      </div>
+    </div>
+    <div class="admin-header-right">
+      <a class="admin-back-btn" href="index.html">← Back to Website</a>
+      <button class="admin-logout-btn" id="admin-logout-btn" type="button" hidden>Sign Out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <!-- Login Screen -->
+    <section class="admin-login-view" id="admin-login-view">
+      <div class="admin-login-card">
+        <div class="admin-login-head">
+          <div class="admin-login-logo">
+            <img src="public/cherry-captures-logo.jpeg" onerror="this.onerror=null; this.src='cherry-captures-logo.jpeg';" alt="Cherry Captures" />
+          </div>
+          <h2>Studio Admin Sign-In</h2>
+          <p>Enter your master password to manage booking enquiries, update phone numbers, and configure services.</p>
+        </div>
+
+        <form class="admin-login-form" id="admin-login-form">
+          <label class="admin-form-label">
+            <span>MASTER PASSWORD</span>
+            <input id="admin-pwd-input" name="password" type="password" autocomplete="current-password" required autofocus placeholder="Enter password (e.g. cherrycaptures2026)" />
+          </label>
+          <div class="admin-quick-pwd-hint">
+            <span>🔑 Click to fill:</span> <b id="fill-pwd-chip">cherrycaptures2026</b>
+          </div>
+          <button class="admin-primary-btn" type="submit">Sign In to Studio Console ↗</button>
+          <p class="admin-error-msg" id="admin-login-error" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard Screen -->
+    <section class="admin-dashboard-view" id="admin-dashboard-view" hidden>
+      <div class="admin-container">
+        <div class="admin-dash-head">
+          <div>
+            <h1>Studio Management Console</h1>
+            <p>Review customer booking enquiries, update phone/WhatsApp contact information, and manage featured services.</p>
+          </div>
+          <div class="admin-quick-stats">
+            <div class="stat-pill"><b>9</b><span>Services</span></div>
+            <div class="stat-pill"><b id="total-enquiries-count">0</b><span>Enquiries</span></div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="admin-tabs-nav">
+          <button class="admin-tab active" data-tab="enquiries">Customer Enquiries (<span id="enquiry-tab-count">0</span>)</button>
+          <button class="admin-tab" data-tab="settings">Studio Contact &amp; WhatsApp</button>
+        </div>
+
+        <!-- Enquiries Tab -->
+        <div class="admin-tab-pane active" id="tab-enquiries">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Client Name</th>
+                  <th>Service Requested</th>
+                  <th>Date &amp; Venue</th>
+                  <th>Contact Details</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="enquiries-tbody">
+                <tr><td colspan="6" style="text-align: center; padding: 30px; color: #888;">No booking enquiries yet. They will appear here when submitted from the contact form.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="admin-tab-pane" id="tab-settings">
+          <form class="admin-settings-form" id="admin-settings-form">
+            <div class="form-row">
+              <label>
+                <span>Studio Direct Phone Number</span>
+                <input name="phone" id="setting-phone" type="text" placeholder="+91 97041 63008" />
+              </label>
+              <label>
+                <span>Studio WhatsApp Number (With Country Code)</span>
+                <input name="whatsapp" id="setting-whatsapp" type="text" placeholder="919704163008" />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>
+                <span>Enquiry Email</span>
+                <input name="email" id="setting-email" type="email" placeholder="cherrycapturesofficial@gmail.com" />
+              </label>
+              <label>
+                <span>Studio Instagram Link</span>
+                <input name="instagram" id="setting-instagram" type="url" placeholder="https://instagram.com/cherrycaptures" />
+              </label>
+            </div>
+            <button class="admin-primary-btn" type="submit" style="max-width: 260px;">Save Studio Details ↗</button>
+            <p id="settings-feedback" style="font-size: 13px; font-weight: 700;"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Admin Footer with Attribution -->
+  <footer class="admin-footer">
+    <span>© <span data-year>2026</span> Cherry Captures Console</span>
+    <div class="footer-dev-attribution">
+      <a class="footer-company-link" href="https://rmvswebservices.onrender.com/" target="_blank" rel="noreferrer">RMVS Webservices</a>
+      <a class="footer-builder-link" href="https://rmvswebservices.onrender.com/developers/riteshlingamallu8" target="_blank" rel="noreferrer">Built by Ritesh Lingamallu</a>
+    </div>
+    <span>Master Password: <b>cherrycaptures2026</b></span>
+  </footer>
+</body>
+</html>

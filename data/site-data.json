@@ -1,0 +1,118 @@
+{
+  "settings": {
+    "phone": "+91 97041 63008",
+    "whatsapp": "919704163008",
+    "email": "cherrycapturesofficial@gmail.com",
+    "instagram": "https://instagram.com/cherrycaptures"
+  },
+  "enquiries": [],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "name": "Kavitha & Sai Kiran",
+      "event": "Wedding Muhurtham & Reception",
+      "rating": 5,
+      "comment": "Cherry Captures made our wedding day unforgettable! TheJeelakarra Bellam and Talambralu shots look like a royal cinema. Every family member was in tears of joy watching our teaser film.",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "rev-2",
+      "name": "Harish Varma & Deepthi",
+      "event": "Pre-Wedding Shoot at Suryalanka Beach",
+      "rating": 5,
+      "comment": "The drone shots during sunset were magical. We got our Save the Date video in 48 hours and it trended on Instagram reels with over 50k views! Thank you Cherry garu!",
+      "date": "2026-10-22"
+    },
+    {
+      "id": "rev-3",
+      "name": "Ananya’s Parents (Venkat & Radhika)",
+      "event": "Half-Saree Ceremony (Langa Voni)",
+      "rating": 5,
+      "comment": "The traditional Kanchipuram silk colors, the mandap lighting, and our daughter’s candid laughter were preserved with utmost love. Cherry is truly a master with the lens.",
+      "date": "2026-10-28"
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad-1",
+      "title": "Marriage & Wedding Muhurtham",
+      "badge": "NOW BOOKING",
+      "description": "Sacred South Indian marriage rituals, Muhurtham, Varmala, and reception cinema captured in authentic 4K HDR.",
+      "image_url": "public/indian-wedding-marriage-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-2",
+      "title": "Romantic Pre-Wedding Shoots",
+      "badge": "TRENDING",
+      "description": "Picturesque heritage palace, lake, and scenic outdoor shoots with cinematic teaser reels and drone tracking.",
+      "image_url": "public/indian-prewedding-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-invitation",
+      "title": "Invitation Videos & Event Promos",
+      "badge": "NEW 4K CARDS",
+      "description": "Opulent animated royal Telugu wedding cards, Save-The-Date motion graphics, couple story teasers & WhatsApp invitation reels.",
+      "image_url": "public/indian-invitation-video-promo.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-3",
+      "title": "1st Birthday & Kids Milestones",
+      "badge": "POPULAR",
+      "description": "Joyful milestone birthday portraits, cake smash laughter, candid family smiles & custom photo books.",
+      "image_url": "public/indian-birthday-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-4",
+      "title": "Traditional Half-Saree Functions (Langa Voni)",
+      "badge": "AUSPICIOUS",
+      "description": "Cherish the auspicious coming-of-age celebration with traditional Kanchipuram silk portraits, family rituals & album.",
+      "image_url": "public/indian-halfsaree-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-4b",
+      "title": "Personal & Creative Portrait Shoots",
+      "badge": "EDITORIAL",
+      "description": "Artistic individual portraits, maternity milestones, fashion model folios, and creative personal branding in dramatic studio lighting.",
+      "image_url": "public/indian-personal-portrait-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-5",
+      "title": "Luxury Car & Vehicle Delivery Shoots",
+      "badge": "EXCLUSIVE",
+      "description": "Cinematic celebration of your dream car delivery at the showroom with ceremonial ribbons, garlands, and 4K reel coverage.",
+      "image_url": "public/indian-car-delivery-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-6",
+      "title": "Instagram Reels & Creative Video Shoots",
+      "badge": "VIRAL REELS",
+      "description": "High-energy 9:16 vertical videos, slow-motion gimbal tracking, and trend-setting edits crafted for Instagram.",
+      "image_url": "public/indian-reels-cinematography-realistic.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    },
+    {
+      "id": "ad-7",
+      "title": "Convention Halls & DJ Live Music",
+      "badge": "VENUES & DJ",
+      "description": "Premier AC convention halls in Guntur & Narasaraopeta with concert line-array DJ sound & lighting. Mandatory pre-booking 15-30 days in advance.",
+      "image_url": "public/indian-convention-hall-luxury.png",
+      "instagram_url": "https://instagram.com/",
+      "active": true
+    }
+  ]
+}
